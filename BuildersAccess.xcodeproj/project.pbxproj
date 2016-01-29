@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111B7B651C5B6713005D3DF8 /* newSchedule3.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B7B641C5B6713005D3DF8 /* newSchedule3.m */; };
 		9E00E3081767FCD200AC86D8 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3071767FCD200AC86D8 /* mp.png */; };
 		9E00E30A1767FCDF00AC86D8 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3091767FCDF00AC86D8 /* sp.png */; };
 		9E00E30C1767FCEA00AC86D8 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E30B1767FCEA00AC86D8 /* logout.png */; };
@@ -339,6 +340,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111B7B631C5B6713005D3DF8 /* newSchedule3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newSchedule3.h; sourceTree = "<group>"; };
+		111B7B641C5B6713005D3DF8 /* newSchedule3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newSchedule3.m; sourceTree = "<group>"; };
 		9E00E3071767FCD200AC86D8 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
 		9E00E3091767FCDF00AC86D8 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 		9E00E30B1767FCEA00AC86D8 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -1784,6 +1787,8 @@
 				B12100A817E8366400E531B9 /* aCell.m */,
 				B12100A917E8366400E531B9 /* reschedule.h */,
 				B12100AA17E8366400E531B9 /* reschedule.m */,
+				111B7B631C5B6713005D3DF8 /* newSchedule3.h */,
+				111B7B641C5B6713005D3DF8 /* newSchedule3.m */,
 			);
 			path = projectSchedule;
 			sourceTree = "<group>";
@@ -2125,6 +2130,7 @@
 				B11F6B4818C5D4AC00C4A963 /* wcfArrayOfstring.m in Sources */,
 				B11F6B4918C5D4AC00C4A963 /* wcfArrayOfSuggestedPriceListItem.m in Sources */,
 				B11F6B4A18C5D4AC00C4A963 /* wcfArrayOfVendor.m in Sources */,
+				111B7B651C5B6713005D3DF8 /* newSchedule3.m in Sources */,
 				B11F6B4B18C5D4AC00C4A963 /* wcfArrayOfVendorAssemblyItem.m in Sources */,
 				B11F6B4C18C5D4AC00C4A963 /* wcfArrayOfVendorContactItem.m in Sources */,
 				B11F6B4D18C5D4AC00C4A963 /* wcfArrayOfVpoListItem.m in Sources */,

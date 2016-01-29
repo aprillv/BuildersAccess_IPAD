@@ -65,30 +65,30 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setHidesBackButton:YES];
-    [self.navigationItem setLeftBarButtonItem:[self getbackButton]];
-    self.title=atitle;
-    
-//    [[ntabbar.items objectAtIndex:0] setAction:@selector(goBack1)];
-    [[ntabbar.items objectAtIndex:0]setTitle:@"Project" ];
-    [[ntabbar.items objectAtIndex:0] setEnabled:YES];
-    [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"home.png"] ];
-    
-//    [[ntabbar.items objectAtIndex:13] setAction:@selector(dorefresh)];
-    [[ntabbar.items objectAtIndex:13]setTitle:@"Refresh" ];
-    [[ntabbar.items objectAtIndex:13] setEnabled:YES];
-    [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"refresh3.png"] ];
-    btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
-    if ([self getIsTwoPart]) {
-        btnNext.frame = CGRectMake(10, 26, 40, 32);
-    }else{
-        btnNext.frame = CGRectMake(60, 26, 40, 32);
-    }
-    
-    [btnNext addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *btnNextImageNormal = [UIImage imageNamed:@"back1"];
-    [btnNext setImage:btnNextImageNormal forState:UIControlStateNormal];
-    [self.navigationBar addSubview:btnNext];
+//    [self.navigationItem setHidesBackButton:YES];
+//    [self.navigationItem setLeftBarButtonItem:[self getbackButton]];
+//    self.title=atitle;
+//    
+////    [[ntabbar.items objectAtIndex:0] setAction:@selector(goBack1)];
+//    [[ntabbar.items objectAtIndex:0]setTitle:@"Project" ];
+//    [[ntabbar.items objectAtIndex:0] setEnabled:YES];
+//    [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"home.png"] ];
+//    
+////    [[ntabbar.items objectAtIndex:13] setAction:@selector(dorefresh)];
+//    [[ntabbar.items objectAtIndex:13]setTitle:@"Refresh" ];
+//    [[ntabbar.items objectAtIndex:13] setEnabled:YES];
+//    [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"refresh3.png"] ];
+//    btnNext = [UIButton buttonWithType:UIButtonTypeCustom];
+//    if ([self getIsTwoPart]) {
+//        btnNext.frame = CGRectMake(10, 26, 40, 32);
+//    }else{
+//        btnNext.frame = CGRectMake(60, 26, 40, 32);
+//    }
+//    
+//    [btnNext addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+//    UIImage *btnNextImageNormal = [UIImage imageNamed:@"back1"];
+//    [btnNext setImage:btnNextImageNormal forState:UIControlStateNormal];
+//    [self.navigationBar addSubview:btnNext];
     
 	// Do any additional setup after loading the view.
 }
@@ -123,7 +123,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self getMilestoneItem];
+    [super viewWillAppear:animated];
+//    [self getMilestoneItem];
 }
 -(void)getMilestoneItem{
     Reachability* curReach  = [Reachability reachabilityWithHostName: @"ws.buildersaccess.com"];
