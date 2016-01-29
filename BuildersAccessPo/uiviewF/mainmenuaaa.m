@@ -366,8 +366,18 @@ NSString *atitle;
     }
     navigationBar.frame=CGRectMake(301, 0, xw-301, NAVBAR_HEIGHT);
     
-    uw.frame=CGRectMake(301, NAVBAR_HEIGHT, xw-301, xh-NAVBAR_HEIGHT);
-    ntabbar.frame=CGRectMake(301, xh-51, xw-301, 50);
+    CGRect ct = uw.frame;
+    ct.origin.x = 301;
+    ct.size.width = xw-301;
+    uw.frame = ct;
+    
+//    uw.frame=CGRectMake(301, NAVBAR_HEIGHT, xw-301, xh-NAVBAR_HEIGHT-51);
+     ct = ntabbar.frame;
+    ct.origin.x = 301;
+    ct.size.width = xw-301;
+    ntabbar.frame = ct;
+//    ntabbar.frame=CGRectMake(301, uw.frame.size.height + uw.frame.origin.y, xw-301, 50);
+//    NSLog(@"frame\n%@\n%@", ntabbar, uw);
     UINavigationItem *item= [navigationBar.items objectAtIndex:0];
     item.leftBarButtonItem=nil;
     [self setIsTwoPart:YES];
@@ -386,11 +396,21 @@ NSString *atitle;
     }
     navigationBar.frame=CGRectMake(0, 0, xw, NAVBAR_HEIGHT);
     
-    uw.frame=CGRectMake(0, NAVBAR_HEIGHT, xw, xh-NAVBAR_HEIGHT);
-    ntabbar.frame=CGRectMake(0, xh-51, xw, 50);
+    CGRect ct = uw.frame;
+    ct.origin.x = 0;
+    ct.size.width = xw;
+    uw.frame = ct;
     
+//    uw.frame=CGRectMake(0, NAVBAR_HEIGHT, xw, xh-NAVBAR_HEIGHT);
+//    ntabbar.frame=CGRectMake(0, uw.frame.size.height + uw.frame.origin.y, xw, 50);
+    ct = ntabbar.frame;
+    ct.origin.x = 0;
+    ct.size.width = xw;
+    ntabbar.frame = ct;
+    
+//    NSLog(@"fasdfs\n%@\n%@", ntabbar, uw);
     UINavigationItem *item= [navigationBar.items objectAtIndex:0];
-    item.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"=]" style:UIBarButtonItemStyleBordered target:self action:@selector(gosmall:)];
+    item.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"=]" style:UIBarButtonItemStyleBordered target:self action:@selector(gosmall:)];
     [self setIsTwoPart:NO];
 }
 

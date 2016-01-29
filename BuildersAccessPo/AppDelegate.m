@@ -37,16 +37,16 @@
     [[UISearchBar appearance] setTintColor:cg];
      [[UIBarButtonItem appearance] setTintColor: [UIColor darkGrayColor]];
     [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
-//    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-//    [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
-//    [[UITableViewCell appearance] setSeparatorInset:UIEdgeInsetsZero];
-//    [[UITableView appearance] setContentInset:insets];
-//    
-//    
-//        [[UITableView appearance] setLayoutMargins:UIEdgeInsetsZero];
-//        [[UITableViewCell appearance] setLayoutMargins:UIEdgeInsetsZero];
-//        [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins:NO];
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
+    [[UITableViewCell appearance] setSeparatorInset:UIEdgeInsetsZero];
+    [[UITableView appearance] setContentInset:insets];
+    
+    
+        [[UITableView appearance] setLayoutMargins:UIEdgeInsetsZero];
+        [[UITableViewCell appearance] setLayoutMargins:UIEdgeInsetsZero];
+        [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins:NO];
     
     
     controller.managedObjectContext = self.managedObjectContext;

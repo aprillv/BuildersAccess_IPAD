@@ -199,6 +199,7 @@
     tbview.delegate=self;
     tbview.dataSource = self;
     tbview.layer.borderWidth = 1.2;
+    tbview.tag = 10;
     tbview.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     tbview.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
     
@@ -341,7 +342,7 @@
         cell.detailTextLabel.text=nst;
         
         
-        [cell .imageView setImage:nil];
+        [cell.imageView setImage:nil];
         return cell;
     }
 }
@@ -371,6 +372,7 @@
 //    [na addObject:indexPath];
 //    [tbview reloadRowsAtIndexPaths:na withRowAnimation: UITableViewRowAnimationFade];
 //}
+
 
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag==1) {

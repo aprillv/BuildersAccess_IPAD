@@ -454,13 +454,14 @@
         selectionDetailq *testVC = [[selectionDetailq alloc]init];
         testVC.managedObjectContext=self.managedObjectContext;
         testVC.idnumber=tdate;
-        testVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        testVC.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    
 //        testVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:testVC animated:YES completion:^() {
 //            NSLog(@"ffff");
         }];
-        testVC.view.superview.frame = CGRectMake(0, 0, 650, 500);//it's important to do this after presentModalViewController
-        testVC.view.superview.center = self.view.center;
+//        testVC.view.superview.frame = CGRectMake(0, 0, 850, 500);//it's important to do this after presentModalViewController
+//        testVC.view.superview.center = self.view.center;
         
 //        selectionDetailq *passcodeViewController = [[selectionDetailq alloc] init];
 //       

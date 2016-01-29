@@ -585,11 +585,14 @@
         if(result.Stage !=nil){
         tmpheight=tmpheight+9;
         }
+        UILabel *borderLabel;
+        
         lbl =[[UILabel alloc]initWithFrame:CGRectMake(10, y, dwidth-20,tmpheight )];
         lbl.layer.borderWidth = 1.2;
         lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
         lbl.layer.cornerRadius=10.0;
         lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+        borderLabel = lbl;
         [sv addSubview:lbl];
         
         lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y+4, dwidth-20, rowheight-1)];
@@ -618,7 +621,7 @@
             ciatbview.separatorColor=[UIColor clearColor];
             [ciatbview setRowHeight:40];
             ciatbview.autoresizingMask =UIViewAutoresizingFlexibleWidth;
-            [sv addSubview:ciatbview];
+            [sv insertSubview:ciatbview belowSubview:borderLabel];
             ciatbview.delegate = self;
             ciatbview.dataSource = self;
              y=y+41;
@@ -643,6 +646,7 @@
             [ciatbview setRowHeight:40];
             ciatbview.autoresizingMask =UIViewAutoresizingFlexibleWidth;
             [sv addSubview:ciatbview];
+            [sv insertSubview:ciatbview belowSubview:borderLabel];
             ciatbview.delegate = self;
             ciatbview.dataSource = self;
             y=y+41;
