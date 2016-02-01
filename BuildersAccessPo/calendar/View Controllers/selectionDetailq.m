@@ -71,18 +71,22 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
-        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, view.bounds.size.width, NAVBAR_HEIGHT)];
+    CGFloat y = (view.frame.size.height - 450 - NAVBAR_HEIGHT)/2 ;
+    
+        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, y, view.bounds.size.width*.75, NAVBAR_HEIGHT)];
+    navigationBar.translucent = NO;
         navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         navigationBar.items = @[self.navigationItem];
     [[navigationBar.items objectAtIndex:0] setTitle:@"Calendar Event"];
         [view addSubview:navigationBar];
+//    view.backgroundColor = [UIColor clearColor];
     
-    MTPopupWindowCloseButton *btn = [[MTPopupWindowCloseButton alloc]initWithFrame:CGRectMake(600, 4, 36, 36)];
+    MTPopupWindowCloseButton *btn = [[MTPopupWindowCloseButton alloc]initWithFrame:CGRectMake(view.bounds.size.width*.825 , 4+y, 36, 36)];
 
     [btn addTarget:self action:@selector(doclose:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btn];
     
-    contentView = [[UIView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, view.bounds.size.width, view.bounds.size.height-NAVBAR_HEIGHT)];
+    contentView = [[UIView alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, NAVBAR_HEIGHT + y, view.bounds.size.width*.75, 450)];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     contentView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     [view addSubview:contentView];
@@ -107,6 +111,8 @@
 -(void)drawpage{
     int y = 5;
     int dwidth =contentView.frame.size.width-20;
+    
+//    dwidth = dwidth *0.75;
     
     UIView * uv =contentView;
     int x=0;
@@ -133,7 +139,7 @@
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 210, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40, y, 210, 21)];
     lbl.text=@"Date";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
@@ -142,7 +148,7 @@
     
     y=y+21+x;
     
-    txtLocation=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, 30)];
+    txtLocation=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth*.7, 30)];
     [txtLocation setBorderStyle:UITextBorderStyleRoundedRect];
     txtLocation.delegate=self;
     txtLocation.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -154,7 +160,7 @@
     
     UITextField * text1;
     
-    text1 =[[UITextField alloc]initWithFrame:CGRectMake(500,  y, 228, 30)];
+    text1 =[[UITextField alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, 30)];
     [text1 setBorderStyle:UITextBorderStyleRoundedRect];
     text1.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     text1.enabled=NO;
@@ -162,7 +168,7 @@
     [uv addSubview: text1];
     
     txtDate=[UIButton buttonWithType: UIButtonTypeCustom];
-    [txtDate setFrame:CGRectMake(505,  y+5, 218, 21)];
+    [txtDate setFrame:CGRectMake(dwidth*.7 +45,  y+5, dwidth*.3 -45, 21)];
     [txtDate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [txtDate addTarget:self action:@selector(popupscreen:) forControlEvents:UIControlEventTouchDown];
     txtDate.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -179,7 +185,7 @@
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40, y, 210, 21)];
     lbl.text=@"Start Time";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
@@ -187,14 +193,14 @@
     
     y=y+21+x;
     
-    txtContractNm=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, 30)];
+    txtContractNm=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth*.7, 30)];
     [txtContractNm setBorderStyle:UITextBorderStyleRoundedRect];
     txtContractNm.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     txtContractNm.delegate=self;
     txtContractNm.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [uv addSubview: txtContractNm];
     
-    text1 =[[UITextField alloc]initWithFrame:CGRectMake(500, y, 228, 30)];
+    text1 =[[UITextField alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, 30)];
     [text1 setBorderStyle:UITextBorderStyleRoundedRect];
     text1.enabled=NO;
     text1.text=@"";
@@ -202,7 +208,7 @@
     [uv addSubview: text1];
     
     txtStart=[UIButton buttonWithType: UIButtonTypeCustom];
-    [txtStart setFrame:CGRectMake(505, y+4, 218, 21)];
+    [txtStart setFrame:CGRectMake(dwidth*.7 +45,  y+4, dwidth*.3 -45, 21)];
     [txtStart setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [txtStart addTarget:self action:@selector(popupscreen1:) forControlEvents:UIControlEventTouchDown];
     [txtStart setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
@@ -219,13 +225,13 @@
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(260, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake((dwidth*.7-20)/2+40, y, 200, 21)];
     lbl.text=@"Mobile";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40, y, 210, 21)];
     lbl.text=@"End Time";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
@@ -235,14 +241,14 @@
     
     y=y+21+x;
     
-    txtPhone=[[UITextField alloc]initWithFrame:CGRectMake(20, y, 305, 30)];
+    txtPhone=[[UITextField alloc]initWithFrame:CGRectMake(20, y, (dwidth*.7-20)/2, 30)];
     [txtPhone setBorderStyle:UITextBorderStyleRoundedRect];
     txtPhone.delegate=self;
     txtPhone.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     txtPhone.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [uv addSubview: txtPhone];
     
-    txtMobile=[[UITextField alloc]initWithFrame:CGRectMake(260, y, 305, 30)];
+    txtMobile=[[UITextField alloc]initWithFrame:CGRectMake(40+(dwidth*.7-20)/2, y, (dwidth*.7-20)/2, 30)];
     [txtMobile setBorderStyle:UITextBorderStyleRoundedRect];
     txtMobile.delegate=self;
     txtMobile.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -251,7 +257,7 @@
     
     
     
-    text1=[[UITextField alloc]initWithFrame:CGRectMake(500, y, 228, 30)];
+    text1=[[UITextField alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, 30)];
     [text1 setBorderStyle:UITextBorderStyleRoundedRect];
     text1.enabled=NO;
     text1.text=@"";
@@ -259,7 +265,7 @@
     [uv addSubview: text1];
     
     txtEnd=[UIButton buttonWithType: UIButtonTypeCustom];
-    [txtEnd setFrame:CGRectMake(505, y+4, 218, 21)];
+    [txtEnd setFrame:CGRectMake(dwidth*.7 +45,  y+4, dwidth*.3 -45, 21)];
     txtEnd.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [txtEnd setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [txtEnd addTarget:self action:@selector(popupscreen2:) forControlEvents:UIControlEventTouchDown];
@@ -277,7 +283,7 @@
     [uv addSubview:lbl];
     y=y+21+x;
     
-    txtemail=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, 30)];
+    txtemail=[[UITextField alloc]initWithFrame:CGRectMake(20, y, dwidth-20, 30)];
     [txtemail setBorderStyle:UITextBorderStyleRoundedRect];
     txtemail.delegate=self;
     txtemail.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -315,7 +321,7 @@
     
   
     loginButton1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginButton1 setFrame:CGRectMake(20, y, 290, 44)];
+    [loginButton1 setFrame:CGRectMake(20, y, (dwidth-40)/2.0, 44)];
     [loginButton1 setTitle:@"Save" forState:UIControlStateNormal];
     [loginButton1.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
     [loginButton1 setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
@@ -326,7 +332,7 @@
     
     
     loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginButton setFrame:CGRectMake(340, y, 290, 44)];
+    [loginButton setFrame:CGRectMake(40+ (dwidth-40)/2.0, y,  (dwidth-40)/2.0, 44)];
     [loginButton setTitle:@"Delete" forState:UIControlStateNormal];
     [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
     [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
@@ -335,6 +341,7 @@
     [loginButton addTarget:self action:@selector(dodelete:) forControlEvents:UIControlEventTouchUpInside];
 //    [uv addSubview:loginButton];
     y=y+54;
+//    NSLog(@"y %f", y);
     
     keyboard =[[CustomKeyboard alloc]init];
     keyboard.delegate=self;
@@ -611,13 +618,7 @@
 }
 
 
--(IBAction)dodelete:(id)sender{
-//    PAPasscodeViewController *passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-//    passcodeViewController.delegate = self;
-//    passcodeViewController.passcode = [self unlockPasscode];
-//    passcodeViewController.simple = YES;
-//     [self presentViewController:passcodeViewController animated:YES completion:nil];
-//    
+-(IBAction)dodelete:(id)sender{   
     donext=2;
     UIAlertView *alert = nil;
     alert = [[UIAlertView alloc]

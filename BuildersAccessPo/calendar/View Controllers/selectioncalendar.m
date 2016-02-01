@@ -454,36 +454,11 @@
         selectionDetailq *testVC = [[selectionDetailq alloc]init];
         testVC.managedObjectContext=self.managedObjectContext;
         testVC.idnumber=tdate;
-        testVC.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
-    
-//        testVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        testVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        testVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         [self presentViewController:testVC animated:YES completion:^() {
 //            NSLog(@"ffff");
         }];
-//        testVC.view.superview.frame = CGRectMake(0, 0, 850, 500);//it's important to do this after presentModalViewController
-//        testVC.view.superview.center = self.view.center;
-        
-//        selectionDetailq *passcodeViewController = [[selectionDetailq alloc] init];
-//       
-//        [self presentViewController:passcodeViewController animated:YES completion:nil];
-        
-//        UIView *tt =[[UIView alloc]initWithFrame:CGRectMake(10, 10, 360, 500)];
-//        tt.backgroundColor=[UIColor whiteColor];
-//    
-//        
-//        [self.view addSubview:tt];
-//        [self.view layoutSubviews];
-        
-//        selectiondetail *pd =[[selectiondetail alloc]init];
-//        pd.managedObjectContext=self.managedObjectContext;
-//        pd.idnumber=tdate;
-//         pd.modalPresentationStyle = UIModalPresentationFormSheet;
-////        pd.menulist=self.menulist;
-////        pd.detailstrarr=self.detailstrarr;
-////        pd.tbindex=self.tbindex;
-//    
-////        [self.navigationController pushViewController:pd animated:NO];
-//        [self.view addSubview:pd.view];
     }
 }
 

@@ -13,7 +13,7 @@
 #import "Reachability.h"
 #import "wcfService.h"
 #import <QuartzCore/QuartzCore.h>
-#import "newSchedule3.h"
+#import "newSchedule2.h"
 #import "CKCalendarCellColors.h"
 
 @interface newSchedule1 (){
@@ -94,15 +94,15 @@
 }
 
 -(void)goTaskDue{
-    newSchedule3 *ns =[newSchedule3 alloc];
+    newSchedule2 *ns =[newSchedule2 alloc];
     ns.managedObjectContext=self.managedObjectContext;
-//    ns.xidproject=self.xidproject;
-//    ns.menulist=self.menulist;
-//    ns.detailstrarr=self.detailstrarr;
-//    ns.tbindex=self.tbindex;
-//    
-//    ns.xidstep=@"-1";
-//    ns.atitle=@"Task Due List";
+    ns.xidproject=self.xidproject;
+    ns.menulist=self.menulist;
+    ns.detailstrarr=self.detailstrarr;
+    ns.tbindex=self.tbindex;
+    
+    ns.xidstep=@"-1";
+    ns.atitle=@"Task Due List";
     [self.navigationController pushViewController:ns animated:NO];
 }
 -(void)orientationChanged{
@@ -328,14 +328,14 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:Download_InstallLink]];
         
     }else{
-        newSchedule3 *ns =[newSchedule3 alloc];
+        newSchedule2 *ns =[newSchedule2 alloc];
         ns.managedObjectContext=self.managedObjectContext;
-//        ns.xidproject=self.xidproject;
-//        ns.xidstep=xidnum.Item;
-//        ns.menulist=self.menulist;
-//        ns.detailstrarr=self.detailstrarr;
-//        ns.tbindex=self.tbindex;
-//        ns.atitle=[NSString stringWithFormat:@"%@ - %@", xidnum.Item, xidnum.Name];
+        ns.xidproject=self.xidproject;
+        ns.xidstep=xidnum.Item;
+        ns.menulist=self.menulist;
+        ns.detailstrarr=self.detailstrarr;
+        ns.tbindex=self.tbindex;
+        ns.atitle=[NSString stringWithFormat:@"%@ - %@", xidnum.Item, xidnum.Name];
         [self.navigationController pushViewController:ns animated:NO];
     }
 }

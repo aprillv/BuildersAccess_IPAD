@@ -371,17 +371,12 @@
         kirbytitledetail *pd =[[kirbytitledetail alloc]init];
         pd.managedObjectContext=self.managedObjectContext;
         pd.idnumber=tdate;
-//        pd.menulist=self.menulist;
-//        pd.detailstrarr=self.detailstrarr;
-//        pd.tbindex=self.tbindex;
-//        [self.navigationController pushViewController:pd animated:NO];
-        
-       
-        pd.modalPresentationStyle = UIModalPresentationFormSheet;
-        //        testVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:pd animated:YES completion:nil];
-        pd.view.superview.frame = CGRectMake(0, 0, 650, 500);//it's important to do this after presentModalViewController
-        pd.view.superview.center = self.view.center;
+
+        pd.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        pd.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:pd animated:YES completion:^() {
+            //            NSLog(@"ffff");
+        }];
         
     }
 }

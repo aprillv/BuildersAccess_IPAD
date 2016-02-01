@@ -518,10 +518,6 @@
 
 -(IBAction)myFunction :(id) sender
 {
-//    viewImage * vi =[viewImage alloc];
-//    vi.managedObjectContext=self.managedObjectContext;
-//    vi.img=scaledImage;
-//    [self.navigationController presentViewController:vi animated:YES completion:nil];
 }
 
 

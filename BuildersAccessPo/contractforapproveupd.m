@@ -1125,7 +1125,6 @@
     si.atitle=@"Site Map";
     si.detailstrarr=self.detailstrarr;
     si.tbindex=self.tbindex;
-//    [self presentViewController:si animated:NO completion:nil];
    [self.navigationController pushViewController:si animated:NO];
 }
 

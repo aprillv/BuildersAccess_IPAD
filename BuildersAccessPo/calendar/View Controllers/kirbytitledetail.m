@@ -43,18 +43,22 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     
-    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, view.bounds.size.width, NAVBAR_HEIGHT)];
+    CGFloat y = (view.frame.size.height - 450 - NAVBAR_HEIGHT)/2 ;
+    
+    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, y, view.bounds.size.width*.75, NAVBAR_HEIGHT)];
+    navigationBar.translucent = NO;
     navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     navigationBar.items = @[self.navigationItem];
     [[navigationBar.items objectAtIndex:0] setTitle:@"Calendar Event"];
     [view addSubview:navigationBar];
+    //    view.backgroundColor = [UIColor clearColor];
     
-    MTPopupWindowCloseButton *btn = [[MTPopupWindowCloseButton alloc]initWithFrame:CGRectMake(600, 4, 36, 36)];
+    MTPopupWindowCloseButton *btn = [[MTPopupWindowCloseButton alloc]initWithFrame:CGRectMake(view.bounds.size.width*.825 , 4+y, 36, 36)];
     
     [btn addTarget:self action:@selector(doclose:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btn];
     
-    uv = [[UIView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, view.bounds.size.width, view.bounds.size.height-NAVBAR_HEIGHT)];
+    uv = [[UIView alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, NAVBAR_HEIGHT + y, view.bounds.size.width*.75, 450)];
     uv.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     uv.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     [view addSubview:uv];
@@ -118,9 +122,9 @@
 -(void)drawScreen{
     
     int x=5;
-    int y=10;
    
     
+    int y = 5;
     int dwidth =uv.frame.size.width-20;
 //    if (uv) {
 //        [uv removeFromSuperview];
@@ -170,14 +174,14 @@
     
     y=y+21+x;
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, rowheight)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth*.7, rowheight)];
     lbl.layer.cornerRadius=10.0;
     lbl.layer.borderWidth = 1.2;
     lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(28, y+4, dwidth*.75-10, rowheight-6)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(28, y+4, dwidth*.7-10, rowheight-6)];
     lbl.text=result.Location;
     lbl.backgroundColor=[UIColor clearColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -186,14 +190,14 @@
     
     
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 128, rowheight)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, rowheight)];
     lbl.layer.cornerRadius=10.0;
     lbl.layer.borderWidth = 1.2;
     lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(508, y+4, 118, rowheight-6)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +45,  y, dwidth*.3 -45, rowheight)];
     lbl.text=result.TDate;
     lbl.backgroundColor=[UIColor clearColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -208,7 +212,7 @@
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40, y, 210, 21)];
     lbl.text=@"Start Time";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
@@ -216,14 +220,14 @@
     
     y=y+21+x;
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, rowheight)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth*.7, rowheight)];
     lbl.layer.cornerRadius=10.0;
     lbl.layer.borderWidth = 1.2;
     lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
     lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(28, y+4, dwidth*.75-16, rowheight-6)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(28, y+4, dwidth*.7-16, rowheight-6)];
     lbl.text=result.ContactName;
     lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     lbl.backgroundColor=[UIColor clearColor];
@@ -232,14 +236,14 @@
    
 
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 128, rowheight)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, rowheight)];
     lbl.layer.cornerRadius=10.0;
     lbl.layer.borderWidth = 1.2;
     lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(508, y+4, 118, rowheight-6)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +45, y+4, 118, rowheight-6)];
     lbl.text=result.StartTime;
     lbl.backgroundColor=[UIColor clearColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -253,13 +257,13 @@
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(260, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake((dwidth*.7-20)/2+40, y, 200, 21)];
     lbl.text=@"Mobile";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 200, 21)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40, y, 210, 21)];
     lbl.text=@"End Time";
     //    lbl.textColor= [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
     lbl.backgroundColor=[UIColor clearColor];
@@ -268,7 +272,7 @@
     
     
     if (result.Phone) {
-        phone=[[UITableView alloc] initWithFrame:CGRectMake(20, y, 230, rowheight)];
+        phone=[[UITableView alloc] initWithFrame:CGRectMake(20, y, (dwidth*.7-20)/2, rowheight)];
         phone.layer.cornerRadius = 10;
         phone.autoresizingMask=UIViewAutoresizingFlexibleWidth;
         phone.tag=5;
@@ -279,7 +283,7 @@
         phone.dataSource = self;
         [uv addSubview:phone];
     }else{
-        lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, 230, rowheight)];
+        lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, (dwidth*.7-20)/2, rowheight)];
         lbl.layer.cornerRadius=10.0;
         lbl.layer.borderWidth = 1.2;
         lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
@@ -290,7 +294,7 @@
 
     
     if (result.Mobile) {
-        Mobile=[[UITableView alloc] initWithFrame:CGRectMake(260, y, 230, rowheight)];
+        Mobile=[[UITableView alloc] initWithFrame:CGRectMake(40+(dwidth*.7-20)/2, y, (dwidth*.7-20)/2, rowheight)];
         Mobile.layer.cornerRadius = 10;
         Mobile.autoresizingMask=UIViewAutoresizingFlexibleWidth;
         Mobile.tag=6;
@@ -304,7 +308,7 @@
         [uv addSubview:Mobile];
         
     }else{
-        lbl =[[UILabel alloc]initWithFrame:CGRectMake(260, y, 230, rowheight)];
+        lbl =[[UILabel alloc]initWithFrame:CGRectMake(40+(dwidth*.7-20)/2, y, (dwidth*.7-20)/2, rowheight)];
         lbl.layer.cornerRadius=10.0;
         lbl.layer.borderWidth = 1.2;
         lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
@@ -316,14 +320,14 @@
     
     
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(500, y, 128, rowheight)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +40,  y, dwidth*.3 -40, rowheight)];
     lbl.layer.cornerRadius=10.0;
     lbl.layer.borderWidth = 1.2;
     lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
      lbl.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [uv addSubview:lbl];
     
-    lbl =[[UILabel alloc]initWithFrame:CGRectMake(508, y+4, 118, rowheight-6)];
+    lbl =[[UILabel alloc]initWithFrame:CGRectMake(dwidth*.7 +45,  y, dwidth*.3 -45, rowheight-6)];
     lbl.text=result.EndTime;
     lbl.backgroundColor=[UIColor clearColor];
     lbl.font=[UIFont systemFontOfSize:14.0];
@@ -348,7 +352,7 @@
     
    
     if(result.Email){
-        Email=[[UITableView alloc] initWithFrame:CGRectMake(20, y, dwidth*.75, rowheight)];
+        Email=[[UITableView alloc] initWithFrame:CGRectMake(20, y, dwidth-20, rowheight)];
         Email.layer.cornerRadius = 10;
         Email.tag=7;
         Email.layer.borderWidth = 1.2;
@@ -360,7 +364,7 @@
         [uv addSubview:Email];
         
     }else{
-        lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth*.75, rowheight)];
+        lbl =[[UILabel alloc]initWithFrame:CGRectMake(20, y, dwidth-20, rowheight)];
         lbl.layer.cornerRadius=10.0;
         lbl.layer.borderWidth = 1.2;
         lbl.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
