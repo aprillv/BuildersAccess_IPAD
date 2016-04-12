@@ -58,10 +58,11 @@ UILabel *lblstatus;
         lblstatus.text=status;
         [self.contentView addSubview: lblstatus];
         
-        label = [[UILabel alloc] initWithFrame: CGRectMake( 0, 43, self.frame.size.width, 1)];
-        label.backgroundColor=[UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
+        CGFloat fl = 1.0/[[UIScreen mainScreen] scale];
+        UIView *label1 = [[UIView alloc] initWithFrame: CGRectMake( 0, 44-fl, self.frame.size.width, fl)];
+        label1.backgroundColor=[UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1];
         //    label.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin;
-        [self.contentView addSubview: label];
+        [self.contentView addSubview: label1];
     }
     
 }

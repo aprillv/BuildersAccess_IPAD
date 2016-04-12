@@ -130,15 +130,16 @@
 
 -(IBAction)gosmall:(id)sender{
     [super gosmall:sender];
-//    [uv setContentSize:CGSizeMake(self.uw.frame.size.width, self.uw.frame.size.height+1)];
+//    [self.sv setContentSize:CGSizeMake(self.uw.frame.size.width, self.uw.frame.size.height+1)];
     btnNext.frame = CGRectMake(10, 26, 40, 32);
-    [tbview reloadData];
+//    [tbview reloadData];
 }
 -(IBAction)gobig:(id)sender{
     [super gobig:sender];
+    
 //    [uv setContentSize:CGSizeMake(self.uw.frame.size.width, self.uw.frame.size.height+1)];
     btnNext.frame = CGRectMake(60, 26, 40, 32);
-    [tbview reloadData];
+//    [tbview reloadData];
 }
 
 -(void)doneClicked{
@@ -153,14 +154,18 @@
             if (!cell3) {
                 cell3 = [[dfirstCell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
                 cell3.accessoryType = UITableViewCellAccessoryNone;
+//                cell3.autoresizingMask = UIViewAutoresizingFlexibleWidth;
                 cell3.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell3.delegate=self;
+                
+                
             }
             return cell3;
         }else{
             if (!cell2) {
                 cell2 = [[firstcell alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];
                 cell2.accessoryType = UITableViewCellAccessoryNone;
+//                cell2.autoresizingMask = UIViewAutoresizingFlexibleWidth;
                 cell2.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell2.delegate=self;
             }
@@ -235,7 +240,7 @@
     lbl.backgroundColor=[UIColor clearColor];
     [ntabbar addSubview:lbl];
     if (!tbview) {
-        tbview=[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.uw.frame.size.width, self.uw.frame.size.height-44)];
+//        tbview=[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.uw.frame.size.width, self.uw.frame.size.height-44)];
         int dh =([rtnlist count]+1)*44;
         if (dh<self.uw.frame.size.height-44) {
             tbview=[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.uw.frame.size.width, dh)];
@@ -249,7 +254,7 @@
         //    tbview.layer.borderWidth = 1.2;
         //    tbview.layer.borderColor=[[UIColor colorWithWhite: 0.7 alpha: 1.0] CGColor];
         //   tbview.layer.cornerRadius = 10;
-        
+        tbview.separatorColor = [UIColor clearColor];
         tbview.delegate = self;
         tbview.dataSource = self;
          [self.uw addSubview:tbview];

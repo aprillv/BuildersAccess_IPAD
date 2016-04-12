@@ -33,8 +33,9 @@
 #import "developmentVendorLs.h"
 #import "projectPhotoFolder.h"
 #import "ProjectPhotoName.h"
+#import "projectContractFiles.h"
 
-@interface project ()<MBProgressHUDDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface project ()<MBProgressHUDDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, projectContractFilesDelegate>{
     MBProgressHUD *HUD;
     NSMutableArray *uploadLs;
     UIAlertView *myAlertView;
@@ -86,6 +87,7 @@
         btnNext.frame = CGRectMake(60, 26, 40, 32);
     }
     
+    [[UITableView appearance] setSeparatorColor:[UIColor clearColor]];
     [btnNext addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
     UIImage *btnNextImageNormal = [UIImage imageNamed:@"back1"];
     [btnNext setImage:btnNextImageNormal forState:UIControlStateNormal];
@@ -942,6 +944,12 @@
         if (result.coyn) {
             [qllist addObject:@"Change Order"];
         }
+        if (result.contractyn) {
+//            [qllist addObject:[NSString stringWithFormat:@"Contract(%@)", result.contractCnt]];
+            if (![result.contractCnt isEqualToString:@"0"]){
+                [qllist addObject:[NSString stringWithFormat:@"Contract(%@)", result.contractCnt]];
+            }
+        }
         if ([result.Status isEqualToString:@"Sold"] || [result.Status isEqualToString:@"Closed"]) {
             [qllist addObject:@"Addendum C"];
         }
@@ -1168,18 +1176,19 @@
     }else{
         static NSString *CellIdentifier = @"Cell";
         
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        BAUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil){
                 if (tableView.tag==30) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                    
+//                    cell.contentView.backgroundColor = [UIColor redColor];
                     cell.textLabel.text =[uploadLs objectAtIndex:indexPath.row];
                     cell.textLabel.font=[UIFont systemFontOfSize:16.0];
+                    cell.layoutMargins = UIEdgeInsetsZero;
                     [cell .imageView setImage:nil];
                 }else if (tableView.tag!=7 && tableView.tag!=10 && tableView.tag!=8 && tableView.tag!=11 && tableView.tag!=15 && tableView.tag!=16 && tableView.tag!=17 && tableView.tag!=18) {
-                cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 32)];
+                cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 32)];
                 CGRect rect = CGRectMake(10, 0, 295, 32);
                 UILabel * label= [[UILabel alloc]initWithFrame:rect];
                 label.textAlignment=NSTextAlignmentLeft;
@@ -1223,7 +1232,7 @@
             }else if(tableView.tag==8){
                 
                 if (result.PM1==nil && result.PM2==nil) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -1234,7 +1243,7 @@
                     cell.userInteractionEnabled = NO;
                 }else{
                     if (cell == nil){
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
@@ -1248,7 +1257,7 @@
                 
             }else if(tableView.tag==11){
                 if (result.Sales1==nil && result.Sales2==nil) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -1259,7 +1268,7 @@
                     cell.userInteractionEnabled = NO;
                 }else{
                     if (cell == nil){
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
@@ -1281,7 +1290,7 @@
             }else if(tableView.tag==10){
                 if (result.Brochure) {
                     if (cell == nil){
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
@@ -1291,7 +1300,7 @@
                     [cell .imageView setImage:nil];
                     
                 }else{
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -1305,7 +1314,7 @@
             }else if(tableView.tag==7){
                 
                 if ([rtnfiles count]==0) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -1316,7 +1325,7 @@
                     cell.userInteractionEnabled = NO;
                 }else{
                     if (cell == nil){
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
@@ -1328,7 +1337,7 @@
                 }
             }else if(tableView.tag==15){
                 if (cell == nil){
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 }
@@ -1346,7 +1355,7 @@
                 
             }else if(tableView.tag==16){
                 if (cell == nil){
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 }
@@ -1355,7 +1364,7 @@
                 cell.textLabel.text=@"Suggest New Price";
             }else if(tableView.tag==18){
                 if (cell == nil){
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 }
@@ -1364,7 +1373,7 @@
                 cell.textLabel.text=result.Status;
              }else{
                  if (cell == nil){
-                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                     cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                      cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                  }
@@ -1668,6 +1677,8 @@
                 }else if([str isEqualToString:@"Change Order"]){
                     
                     [self getCols];
+                }else if([str hasPrefix:@"Contract("]){
+                                        [self gotoContractFiles: str];
                 }else if ([str isEqualToString:@"Preferred Vendors"]) {
                     developmentVendorLs *dl = [developmentVendorLs alloc];
                     dl.managedObjectContext=self.managedObjectContext;
@@ -1949,6 +1960,8 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
 	// Do something with the BOOL result
     
+    if ([HUD.labelText hasPrefix:@"Download Project's Contract"]){return;}
+    
 	if ([HUD.labelText isEqualToString:@"Download Project File..."]) {
         NSString *str;
         
@@ -2070,7 +2083,7 @@
         NSString *deviceType = [UIDevice currentDevice].localizedModel;
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Your %@ doesn't seem to have any other Apps installed that can open this document. Would you like to use safari to open it?",
                                                                          @"Your %@ doesn't seem to have any other Apps installed that can open this document. Would you like to use safari to open it?"), deviceType];
-        
+      
         // Display alert
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No suitable Apps installed", @"No suitable App installed")
                                                         message:message
@@ -2096,5 +2109,134 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)gotoContractFiles:(NSString *) str{
+    wcfService* service = [wcfService service];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    [service xGetProjectContractFiles:self action: @selector(xGetProjectContractFilesHandler:)  xemail:[userInfo getUserName] xpassword:[userInfo getUserPwd] xidcia:[[NSNumber numberWithInt:[userInfo getCiaId]] stringValue]  projectid:idproject EquipmentType:@"3"];
+    
+}
+
+- (void) xGetProjectContractFilesHandler: (id) value {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    // Handle errors
+    if([value isKindOfClass:[NSError class]]) {
+        NSError *error = value;
+        NSLog(@"%@", [error localizedDescription]);
+        UIAlertView *alert=[self getErrorAlert:@"We are temporarily unable to connect to BuildersAccess, please check your internet connection and try again. Thanks for your patience."];
+        [alert show];
+        return;
+    }
+    
+    // Handle faults
+    if([value isKindOfClass:[SoapFault class]]) {
+        SoapFault *sf =value;
+        NSLog(@"%@", [sf description]);
+        UIAlertView *alert = [self getErrorAlert: value];
+        [alert show];
+        return;
+    }
+    
+    wcfArrayOfProjectFile* result2 = (wcfArrayOfProjectFile*)value;
+    if (result2.count != 1) {
+        wcfProjectFile *item = [result2.items firstObject];
+        [self perpareDownLoadContractFile:item];
+        
+        //                NSData *data = [NSData dataWithContentsOfURL:url];
+    }else{
+        projectContractFiles *pl =[[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil] instantiateViewControllerWithIdentifier:@"projectContractFiles"];
+//        pl.managedObjectContext=self.managedObjectContext;
+        pl.title=@"Contract Files";
+        pl.idproject = self.idproject;
+        pl.projectname = result.Name;
+        pl.fileListresult = result2.items;
+        pl.delegate = self;
+        self.view.backgroundColor = [UIColor clearColor];
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+//        [self presentModalViewController:modalVC animated:YES];
+        
+        [self.navigationController presentViewController:pl animated:YES completion:^{
+            
+        }];
+//
+//        [self.navigationController pushViewController:pl animated:YES];
+    }
+    
+}
+
+-(void)perpareDownLoadContractFile:(wcfProjectFile *)item{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.labelText=@"Download Project's Contract File...";
+    HUD.dimBackground = YES;
+    HUD.delegate = self;
+    [HUD show:YES];
+    
+    NSString *str;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
+    
+    NSString *url1 = [NSString stringWithFormat:@"http://ws.buildersaccess.com/wsdownload.aspx?id=%@-%@&fs=%@&fname%@", item.ID, [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue], item.FSize, [item.FName stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
+    wcfService* service = [wcfService service];
+    str=[[NSString stringWithFormat:@"%@ ~ %@", idproject, result.Name]stringByAddingPercentEscapesUsingEncoding:
+         NSASCIIStringEncoding];
+    
+    NSString* escapedUrlString =
+    [[NSString stringWithFormat:@"<view> %@", item.FName] stringByAddingPercentEscapesUsingEncoding:
+     NSASCIIStringEncoding];
+    
+    [service xAddUserLog:self action:@selector(xAddUserLogHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] logscreen: @"Project File" keyname: str filename: escapedUrlString EquipmentType: @"3"];
+    
+    NSURL *url = [NSURL URLWithString:url1];
+    turl = url;
+    [self downloadFile: url];
+}
+
+-(void) downloadFile:(NSURL *)url
+{
+    //    NSURL * url = [NSURL URLWithString:@"https://s3.amazonaws.com/hayageek/downloads/SimpleBackgroundFetch.zip"];
+    
+    //    let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+    //    dispatch_async(dispatch_get_global_queue(qos, 0)) {
+    //        let imageData = NSData(contentsOfURL: url)
+    //        dispatch_async(dispatch_get_main_queue()){
+    //            if url == self.imageURL{
+    //                if imageData != nil{
+    //                    self.image = UIImage(data: imageData!)
+    //                }else{
+    //                    self.image = nil
+    //                }
+    //            }
+    //
+    //        }
+    //    }
+    
+    //    id qos = [QOS_CLASS_USER_INITIATED rawValue];
+    NSString *pdfname = @"tmp.pdf";
+    dispatch_async((dispatch_get_global_queue(0, 0)), ^{
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [data writeToFile:[self GetTempPath:pdfname] atomically:NO];
+            
+            BOOL exist = [self isExistsFile:[self GetTempPath:pdfname]];
+            [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+            if (exist) {
+                HUD.progress=1;
+                [HUD hide];
+                
+                NSString *filePath = [self GetTempPath:pdfname];
+                NSURL *URL = [NSURL fileURLWithPath:filePath];
+                [self openDocumentInteractionController:URL];
+            }
+            
+        });
+    });
+    
+}
+
+-(void)openFiles:(wcfProjectFile *)fileNm{
+    [self perpareDownLoadContractFile:fileNm];
+}
+
 
 @end

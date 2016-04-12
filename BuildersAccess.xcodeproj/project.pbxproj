@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11EB61731CBCC06100C3DCE4 /* projectContractFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EB61721CBCC06100C3DCE4 /* projectContractFiles.m */; };
+		11EB61761CBCE2C000C3DCE4 /* BAUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EB61751CBCE2C000C3DCE4 /* BAUITableViewCell.m */; };
+		11EB61791CBCEB6600C3DCE4 /* BAUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EB61781CBCEB6600C3DCE4 /* BAUITableView.m */; };
+		11EB61891CBD024000C3DCE4 /* ios7-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB61861CBD024000C3DCE4 /* ios7-arrow-right.png */; };
+		11EB618A1CBD024000C3DCE4 /* ios7-arrow-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB61871CBD024000C3DCE4 /* ios7-arrow-right@2x.png */; };
+		11EB618B1CBD024000C3DCE4 /* ios7-arrow-right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB61881CBD024000C3DCE4 /* ios7-arrow-right@3x.png */; };
 		9E00E3081767FCD200AC86D8 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3071767FCD200AC86D8 /* mp.png */; };
 		9E00E30A1767FCDF00AC86D8 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3091767FCDF00AC86D8 /* sp.png */; };
 		9E00E30C1767FCEA00AC86D8 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E30B1767FCEA00AC86D8 /* logout.png */; };
@@ -339,6 +345,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11EB61711CBCC06100C3DCE4 /* projectContractFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectContractFiles.h; sourceTree = "<group>"; };
+		11EB61721CBCC06100C3DCE4 /* projectContractFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = projectContractFiles.m; sourceTree = "<group>"; };
+		11EB61741CBCE2C000C3DCE4 /* BAUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAUITableViewCell.h; sourceTree = "<group>"; };
+		11EB61751CBCE2C000C3DCE4 /* BAUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAUITableViewCell.m; sourceTree = "<group>"; };
+		11EB61771CBCEB6600C3DCE4 /* BAUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAUITableView.h; sourceTree = "<group>"; };
+		11EB61781CBCEB6600C3DCE4 /* BAUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAUITableView.m; sourceTree = "<group>"; };
+		11EB61861CBD024000C3DCE4 /* ios7-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right.png"; sourceTree = "<group>"; };
+		11EB61871CBD024000C3DCE4 /* ios7-arrow-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right@2x.png"; sourceTree = "<group>"; };
+		11EB61881CBD024000C3DCE4 /* ios7-arrow-right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right@3x.png"; sourceTree = "<group>"; };
 		9E00E3071767FCD200AC86D8 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
 		9E00E3091767FCDF00AC86D8 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 		9E00E30B1767FCEA00AC86D8 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -1157,6 +1172,9 @@
 			children = (
 				B1B6805618C5EC30008F93BC /* top1.gif */,
 				B11F6B9718C5E41E00C4A963 /* april.png */,
+				11EB61861CBD024000C3DCE4 /* ios7-arrow-right.png */,
+				11EB61871CBD024000C3DCE4 /* ios7-arrow-right@2x.png */,
+				11EB61881CBD024000C3DCE4 /* ios7-arrow-right@3x.png */,
 				B1FFF73818C5BA220004DD94 /* chked.png */,
 				B1FFF73918C5BA220004DD94 /* chk.png */,
 				B1BC897E17F2CE0200A2A0F3 /* zoom.png */,
@@ -1297,6 +1315,12 @@
 				B110FB8118519C4D007AE89C /* polbl.m */,
 				B11BA36618768F88000B4186 /* MTPopupWindowCloseButton.h */,
 				B11BA36718768F88000B4186 /* MTPopupWindowCloseButton.m */,
+				11EB61711CBCC06100C3DCE4 /* projectContractFiles.h */,
+				11EB61721CBCC06100C3DCE4 /* projectContractFiles.m */,
+				11EB61741CBCE2C000C3DCE4 /* BAUITableViewCell.h */,
+				11EB61751CBCE2C000C3DCE4 /* BAUITableViewCell.m */,
+				11EB61771CBCEB6600C3DCE4 /* BAUITableView.h */,
+				11EB61781CBCEB6600C3DCE4 /* BAUITableView.m */,
 			);
 			path = CustomControl;
 			sourceTree = "<group>";
@@ -1884,6 +1908,7 @@
 				9E2EE2A316ED6E1C00122496 /* set_pin.png in Resources */,
 				9E2EE2A416ED6E1C00122496 /* schedule.png in Resources */,
 				9E2EE2A516ED6E1C00122496 /* reset_pin.png in Resources */,
+				11EB61891CBD024000C3DCE4 /* ios7-arrow-right.png in Resources */,
 				9E2EE2A616ED6E1C00122496 /* refresh3.png in Resources */,
 				9E2EE2A816ED6E1C00122496 /* refresh1.png in Resources */,
 				9E2EE2A916ED6E1C00122496 /* newPO.png in Resources */,
@@ -1917,6 +1942,7 @@
 				9E48CEA3174378EA00D70A14 /* greenButton.png in Resources */,
 				9E1ED636175DBEBE006B7641 /* Storyboard.storyboard in Resources */,
 				9E1CD7FE1761810C001FF113 /* ba.png in Resources */,
+				11EB618B1CBD024000C3DCE4 /* ios7-arrow-right@3x.png in Resources */,
 				9E00E3081767FCD200AC86D8 /* mp.png in Resources */,
 				9E00E30A1767FCDF00AC86D8 /* sp.png in Resources */,
 				9E00E30C1767FCEA00AC86D8 /* logout.png in Resources */,
@@ -1924,6 +1950,7 @@
 				9E19E950176ABA83003172A5 /* back.png in Resources */,
 				9E2441D3176ABEAF007A83DA /* back1.png in Resources */,
 				9E8FAE14178AB6FF00CD0C2A /* yButton.png in Resources */,
+				11EB618A1CBD024000C3DCE4 /* ios7-arrow-right@2x.png in Resources */,
 				9E6BB25E178EC811006AFFCA /* fs.png in Resources */,
 				9E91FB171799072600AEA4F7 /* calendarqa.png in Resources */,
 				9E91FB191799078500AEA4F7 /* kirbytitle.png in Resources */,
@@ -2088,6 +2115,7 @@
 				B1C2595F183CAF3B008B63D0 /* vendorlistfirstCell.m in Sources */,
 				B1E3E490183DDBD60059F03B /* startpackCell.m in Sources */,
 				B1E3E493183DDE5F0059F03B /* startpackfirstCell.m in Sources */,
+				11EB61791CBCEB6600C3DCE4 /* BAUITableView.m in Sources */,
 				B18BE402183F272500F365E5 /* contractlistCell.m in Sources */,
 				B18BE405183F2B4D00F365E5 /* contractlistfirstCell.m in Sources */,
 				B18BE408183F3C6400F365E5 /* bustoutCell.m in Sources */,
@@ -2159,6 +2187,7 @@
 				B11F6B6A18C5D4AC00C4A963 /* wcfReasonListItem.m in Sources */,
 				B11F6B6B18C5D4AC00C4A963 /* wcfRequestedPO2Item.m in Sources */,
 				B11F6B6C18C5D4AC00C4A963 /* wcfRequestedPODetail.m in Sources */,
+				11EB61761CBCE2C000C3DCE4 /* BAUITableViewCell.m in Sources */,
 				B11F6B6D18C5D4AC00C4A963 /* wcfRequestedPOListItem.m in Sources */,
 				B11F6B6F18C5D4AC00C4A963 /* wcfServices.m in Sources */,
 				B11F6B7018C5D4AC00C4A963 /* wcfStartPackItem.m in Sources */,
@@ -2189,6 +2218,7 @@
 				B11F6B8A18C5D4AC00C4A963 /* CXMLElement.m in Sources */,
 				B11F6B8B18C5D4AC00C4A963 /* CXMLNode.m in Sources */,
 				B11F6B8C18C5D4AC00C4A963 /* CXMLNode_PrivateExtensions.m in Sources */,
+				11EB61731CBCC06100C3DCE4 /* projectContractFiles.m in Sources */,
 				B11F6B8D18C5D4AC00C4A963 /* CXMLNode_XPathExtensions.m in Sources */,
 				B11F6B9018C5D7D300C4A963 /* wcfKirbytileItem2.m in Sources */,
 				B11F6B9318C5D7F500C4A963 /* wcfArrayOfKirbytileItem2.m in Sources */,

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Fyn-MV-bhT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Fyn-MV-bhT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -39,6 +40,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBD-DV-Nzp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1273" y="-177"/>
+        </scene>
+        <!--Project Contract Files-->
+        <scene sceneID="ghc-Ml-eNz">
+            <objects>
+                <viewController storyboardIdentifier="projectContractFiles" modalPresentationStyle="overCurrentContext" id="x4x-hj-nwb" customClass="projectContractFiles" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oeE-K3-gF0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Juu-aX-DJM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EDM-iD-GYl">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wcZ-jD-5eR">
+                                <rect key="frame" x="160" y="62" width="704" height="643"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filenamecell" id="mA9-1J-buY">
+                                        <rect key="frame" x="0.0" y="28" width="704" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mA9-1J-buY" id="Pin-Wj-dVx">
+                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="wcZ-jD-5eR" firstAttribute="leading" secondItem="EDM-iD-GYl" secondAttribute="leadingMargin" constant="140" id="aSt-ED-TXY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wcZ-jD-5eR" secondAttribute="trailing" constant="140" id="flO-xu-4as"/>
+                            <constraint firstItem="Juu-aX-DJM" firstAttribute="top" secondItem="wcZ-jD-5eR" secondAttribute="bottom" constant="63" id="hvs-PY-rJh"/>
+                            <constraint firstItem="wcZ-jD-5eR" firstAttribute="top" secondItem="oeE-K3-gF0" secondAttribute="bottom" constant="42" id="thR-7M-nVx"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="isU-fO-CHk" appends="YES" id="fgT-oG-slN"/>
+                        </connections>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="wcZ-jD-5eR" id="mit-FL-Ngn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXL-o4-3Su" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="isU-fO-CHk">
+                    <connections>
+                        <action selector="dismissaaa:" destination="x4x-hj-nwb" id="56f-rY-4i7"/>
+                        <outlet property="delegate" destination="x4x-hj-nwb" id="9Iq-g1-MvQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="551" y="165"/>
         </scene>
     </scenes>
 </document>

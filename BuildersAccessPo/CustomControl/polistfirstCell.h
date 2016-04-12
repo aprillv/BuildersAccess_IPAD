@@ -16,4 +16,5 @@
 
 @interface polistfirstCell : UITableViewCell
 @property (nonatomic, strong) id<polistfirstCellDelegate> delegate;
+
 @end

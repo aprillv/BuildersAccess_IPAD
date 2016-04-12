@@ -36,17 +36,25 @@
     [[UINavigationBar appearance] setTintColor:cg];
     [[UISearchBar appearance] setTintColor:cg];
      [[UIBarButtonItem appearance] setTintColor: [UIColor darkGrayColor]];
-    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, 0, 0);
+    
+    
+    
     [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
     [[UITableViewCell appearance] setSeparatorInset:UIEdgeInsetsZero];
-    [[UITableView appearance] setContentInset:insets];
     
     
+    if ([[[UIDevice currentDevice] systemVersion] intValue] == 8) {
         [[UITableView appearance] setLayoutMargins:UIEdgeInsetsZero];
         [[UITableViewCell appearance] setLayoutMargins:UIEdgeInsetsZero];
-        [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins:NO];
+        [[UITableViewCell appearance] setPreservesSuperviewLayoutMargins: NO];
+    }
+    
+    if ([[[UIDevice currentDevice] systemVersion] intValue] == 9) {
+        [[UITableView appearance] setCellLayoutMarginsFollowReadableWidth:NO];
+    }
+    
+    
     
     
     controller.managedObjectContext = self.managedObjectContext;

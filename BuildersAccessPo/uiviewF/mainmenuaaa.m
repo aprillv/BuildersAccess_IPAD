@@ -371,6 +371,15 @@ NSString *atitle;
     ct.size.width = xw-301;
     uw.frame = ct;
     
+//    for (UITableView *tb in uw.subviews) {
+//        if ([tb isKindOfClass:[UITableView class]]) {
+//            CGRect ct = tb.frame;
+//            ct.origin.x = 301;
+//            ct.size.width = xw-301;
+//            tb.frame = ct;
+//        }
+//    }
+    
 //    uw.frame=CGRectMake(301, NAVBAR_HEIGHT, xw-301, xh-NAVBAR_HEIGHT-51);
      ct = ntabbar.frame;
     ct.origin.x = 301;
@@ -400,6 +409,15 @@ NSString *atitle;
     ct.origin.x = 0;
     ct.size.width = xw;
     uw.frame = ct;
+    
+//    for (UITableView *tb in uw.subviews) {
+//        if ([tb isKindOfClass:[UITableView class]]) {
+//            CGRect ct = tb.frame;
+//            ct.origin.x = 301;
+//            ct.size.width = xw-301;
+//            tb.frame = ct;
+//        }
+//    }
     
 //    uw.frame=CGRectMake(0, NAVBAR_HEIGHT, xw, xh-NAVBAR_HEIGHT);
 //    ntabbar.frame=CGRectMake(0, uw.frame.size.height + uw.frame.origin.y, xw, 50);
