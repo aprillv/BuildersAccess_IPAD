@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface phonelistCell : UITableViewCell
+@interface phonelistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *Name;
 @property (nonatomic, retain)  NSString         *Title;
 @property (nonatomic, retain)  NSString         *Email;

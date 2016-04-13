@@ -822,7 +822,7 @@ int dwidth = self.uw.frame.size.width;
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil){
             if (tableView.tag==30) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 
@@ -831,7 +831,7 @@ int dwidth = self.uw.frame.size.width;
                 [cell .imageView setImage:nil];
             }else if(tableView.tag==5){
                 if (cell == nil){
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 
@@ -850,7 +850,7 @@ int dwidth = self.uw.frame.size.width;
                 [cell .imageView setImage:nil];
             }else if(tableView.tag==8){
                 if (result.PM1==nil && result.PM2==nil) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -862,7 +862,7 @@ int dwidth = self.uw.frame.size.width;
                 }else{
                     if (cell == nil)
                     {
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;                    }
                     
@@ -875,7 +875,7 @@ int dwidth = self.uw.frame.size.width;
                 }
             }else if(tableView.tag==15){
                 if (cell == nil){
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                    cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;                }
                 cell.textLabel.font=[UIFont systemFontOfSize:16.0];
@@ -893,7 +893,7 @@ int dwidth = self.uw.frame.size.width;
                 
             }else if(tableView.tag==11){
                 if (result.Sales1==nil && result.Sales2==nil) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -905,7 +905,7 @@ int dwidth = self.uw.frame.size.width;
                 }else{
                     if (cell == nil)
                     {
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     }
@@ -930,7 +930,7 @@ int dwidth = self.uw.frame.size.width;
                 }
             }else{
                 if ([rtnfiles count]==0) {
-                    cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+                    cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
                     CGRect rect = CGRectMake(10, 0, 295, 44);
                     UILabel * label= [[UILabel alloc]initWithFrame:rect];
                     label.textAlignment=NSTextAlignmentLeft;
@@ -942,7 +942,7 @@ int dwidth = self.uw.frame.size.width;
                 }else{
                     if (cell == nil)
                     {
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                        cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.selectionStyle = UITableViewCellSelectionStyleBlue;                    }
                     wcfProjectFile *pf =[rtnfiles objectAtIndex:indexPath.row];

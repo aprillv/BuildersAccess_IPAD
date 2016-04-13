@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
 @protocol suggestfirstCellDelegate
 
@@ -14,7 +14,7 @@
 -(void)doaClicked:(NSString *)str :(BOOL)isup;
 @end
 
-@interface suggestfirstCell : UITableViewCell
+@interface suggestfirstCell : BAUITableViewCell
 
 @property (nonatomic, strong) id<suggestfirstCellDelegate> delegate;
 

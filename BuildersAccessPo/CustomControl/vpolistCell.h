@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface vpolistCell : UITableViewCell
+@interface vpolistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *RequesteNo;
 @property (nonatomic, retain)  NSString         *Requested;
 @property (nonatomic, retain)  NSString         *Project;

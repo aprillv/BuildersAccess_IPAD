@@ -2139,7 +2139,7 @@
     }
     
     wcfArrayOfProjectFile* result2 = (wcfArrayOfProjectFile*)value;
-    if (result2.count != 1) {
+    if (result2.count == 1) {
         wcfProjectFile *item = [result2.items firstObject];
         [self perpareDownLoadContractFile:item];
         

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface aCell : UITableViewCell
+@interface aCell : BAUITableViewCell
 @property BOOL ismore;
 @end

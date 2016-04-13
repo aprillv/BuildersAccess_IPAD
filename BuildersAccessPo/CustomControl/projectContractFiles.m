@@ -81,6 +81,12 @@
     
 }
 
+//-(void)viewWillAppear:(BOOL)animated{
+//    cl_cia *mcia =[[cl_cia alloc]init];
+//    mcia.managedObjectContext=self.managedObjectContext;
+//    fileListresult =[mcia getCiaList];
+//
+//}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     wcfProjectFile *item = [self.fileListresult objectAtIndex: indexPath.row];
   
@@ -91,6 +97,32 @@
             [self.delegate openFiles:item];
         }
     }];
+//    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [self.navigationController.view addSubview:HUD];
+//    HUD.labelText=@"Download Project's Contract File...";
+//    HUD.dimBackground = YES;
+//    //    HUD.delegate = self;
+//    [HUD show:YES];
+//    //                alertViewWithProgressbar = [[AGAlertViewWithProgressbar alloc] initWithTitle:@"BuildersAccess" message:@"Download Project File..." delegate:self otherButtonTitles:nil];
+//    
+//    //                [alertViewWithProgressbar show];
+//    NSString *str;
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
+//    
+//    NSString *url1 = [NSString stringWithFormat:@"http://ws.buildersaccess.com/wsdownload.aspx?id=%@-%@&fs=%@&fname%@", item.ID, [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue], item.FSize, [item.FName stringByReplacingOccurrencesOfString:@" " withString:@""]];
+//    wcfService* service = [wcfService service];
+//    str=[[NSString stringWithFormat:@"%@ ~ %@", idproject, projectname]stringByAddingPercentEscapesUsingEncoding:
+//         NSASCIIStringEncoding];
+//    
+//    NSString* escapedUrlString =
+//    [[NSString stringWithFormat:@"<view> %@", item.FName] stringByAddingPercentEscapesUsingEncoding:
+//     NSASCIIStringEncoding];
+//    
+//    [service xAddUserLog:self action:@selector(xAddUserLogHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] logscreen: @"Project File" keyname: str filename: escapedUrlString EquipmentType: @"3"];
+//    
+//    NSURL *url = [NSURL URLWithString:url1];
+//    [self downloadFile: url];
+    //    [self autoUpd];
 }
 
 

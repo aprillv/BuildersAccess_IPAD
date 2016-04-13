@@ -1219,7 +1219,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell ==nil) {
-        cell=[[UITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 32)];
+        cell=[[BAUITableViewCell alloc]initWithFrame:CGRectMake(0, 0, 300, 32)];
         CGRect rect = CGRectMake(10, 0, 295, 32);
         UILabel * label= [[UILabel alloc]initWithFrame:rect];
         label.textAlignment=NSTextAlignmentLeft;
@@ -1292,7 +1292,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell ==nil) {
             
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.textLabel.text=@"View Sitemap";

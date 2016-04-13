@@ -140,7 +140,7 @@
     CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
     ax=ax+1;
     
-    aw=dwidth*.14;
+    aw=dwidth*.125;
     if (isfirst) {
         [total drawInRect: CGRectMake(ax, 10, aw, 20) withFont: self.font lineBreakMode: NSLineBreakByClipping
                 alignment: NSTextAlignmentCenter];

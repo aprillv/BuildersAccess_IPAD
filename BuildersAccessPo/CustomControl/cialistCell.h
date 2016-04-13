@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface cialistCell : UITableViewCell
+@interface cialistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *Id;
 @property (nonatomic, retain)  NSString         *Cname;
 @end

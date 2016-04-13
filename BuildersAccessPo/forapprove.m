@@ -260,7 +260,7 @@
 //        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //        if (cell == nil)
 //        {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//            cell = [[BAUITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 //
 //        }
 //               cntlbl *lt =[[cntlbl alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 44)];

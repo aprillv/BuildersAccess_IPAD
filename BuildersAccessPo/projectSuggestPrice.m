@@ -439,7 +439,10 @@
     y=y+120;
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn1 setFrame:CGRectMake(10, y, dwidth, 36)];
+    [btn1 setFrame:CGRectMake(10, y, dwidth, 40)];
+    btn1.backgroundColor = [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:1];
+    btn1.layer.cornerRadius = 8.0f;
+//    btn1.layer.borderWidth = 1.0f;
     btn1.autoresizingMask=UIViewAutoresizingFlexibleWidth;
     [btn1 setTitle:@"Submit Price" forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(dosubmit:) forControlEvents:UIControlEventTouchDown];

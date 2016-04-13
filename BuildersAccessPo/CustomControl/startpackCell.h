@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface startpackCell : UITableViewCell
+@interface startpackCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *cname;
 @property (nonatomic, retain)  NSString         *cvalue;
 @end

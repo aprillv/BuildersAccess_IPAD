@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
 
 @protocol cntlistfirstCellDelegate
@@ -15,7 +15,7 @@
 -(void)doaClicked:(NSString *)str :(BOOL)isup;
 @end
 
-@interface cntlistfirstCell : UITableViewCell
+@interface cntlistfirstCell : BAUITableViewCell
 
 @property (nonatomic, strong) id<cntlistfirstCellDelegate> delegate;
 @property (nonatomic, retain)  NSString         *cname;

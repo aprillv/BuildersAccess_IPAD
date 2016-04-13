@@ -288,7 +288,7 @@
         if (cell == nil)
         {
             cell = [[aCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         [cell setEditing:YES animated:YES];
@@ -347,7 +347,7 @@
             
         }
         
-        cell.detailTextLabel.numberOfLines=n;
+        cell.detailTextLabel.numberOfLines=0;
         cell.detailTextLabel.text=nst;
         
         

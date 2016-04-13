@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface colistcell : UITableViewCell
+@interface colistcell : BAUITableViewCell
 
 @property (nonatomic, retain)  NSString         *Number;
 @property (nonatomic, retain)  NSString         *sDate;

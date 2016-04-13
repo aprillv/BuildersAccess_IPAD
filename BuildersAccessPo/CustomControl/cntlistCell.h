@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface cntlistCell : UITableViewCell
+@interface cntlistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *cnt;
 @property (nonatomic, retain)  NSString         *Cname;
 @end

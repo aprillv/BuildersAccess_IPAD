@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
 
 @protocol calendarbuilderfirstCellDelegate
@@ -15,7 +15,7 @@
 -(void)doaClicked:(NSString *)str :(BOOL)isup;
 @end
 
-@interface calendarbuilderfirstCell : UITableViewCell
+@interface calendarbuilderfirstCell : BAUITableViewCell
 
 @property (nonatomic, strong) id<calendarbuilderfirstCellDelegate> delegate;
 

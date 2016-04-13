@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
 @protocol vpolistfirstCellDelegate
 
@@ -15,7 +15,7 @@
 @end
 
 
-@interface vpolistfirstCell : UITableViewCell
+@interface vpolistfirstCell : BAUITableViewCell
 
 @property (nonatomic, strong) id<vpolistfirstCellDelegate> delegate;
 

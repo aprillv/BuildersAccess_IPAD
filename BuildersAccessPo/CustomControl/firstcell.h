@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
 @protocol firstcellDelegate
 
@@ -14,7 +14,7 @@
 -(void)doaClicked:(NSString *)str :(BOOL)isup;
 @end
 
-@interface firstcell : UITableViewCell
+@interface firstcell : BAUITableViewCell
 
 @property (nonatomic, strong) id<firstcellDelegate> delegate;
 

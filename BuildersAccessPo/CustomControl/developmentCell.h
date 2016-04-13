@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface developmentCell : UITableViewCell
+@interface developmentCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *idproject;
 @property (nonatomic, retain)  NSString         *projectname;
 @property (nonatomic, retain)  NSString         *status;

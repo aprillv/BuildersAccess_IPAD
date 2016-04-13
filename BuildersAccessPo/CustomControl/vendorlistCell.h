@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface vendorlistCell : UITableViewCell
+@interface vendorlistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *contact;
 @property (nonatomic, retain)  NSString         *Cname;
 @end

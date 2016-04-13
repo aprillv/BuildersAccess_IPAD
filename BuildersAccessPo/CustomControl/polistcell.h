@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface polistcell : UITableViewCell
+@interface polistcell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *Doc;
 @property (nonatomic, retain)  NSString         *Nvendor;
 @property (nonatomic, retain)  NSString         *Shipto;

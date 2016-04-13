@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface contractlistCell : UITableViewCell
+@interface contractlistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *cno;
 @property (nonatomic, retain)  NSString         *cdate;
 @property (nonatomic, retain)  NSString         *projectname;

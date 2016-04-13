@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface calendarbuilderCell : UITableViewCell
+@interface calendarbuilderCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *Reschedule;
 @property (nonatomic, retain)  NSString         *Requested;
 @property (nonatomic, retain)  NSString         *Subject;

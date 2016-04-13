@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 eloveit. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BAUITableViewCell.h"
 
-@interface sugestlistCell : UITableViewCell
+@interface sugestlistCell : BAUITableViewCell
 @property (nonatomic, retain)  NSString         *idproject;
 @property (nonatomic, retain)  NSString         *project;
 @property (nonatomic, retain)  NSString         *sqft;
