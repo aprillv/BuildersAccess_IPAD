@@ -1091,20 +1091,40 @@
         pmEmailLs=[[NSMutableArray alloc]init];
         if (result.PM1) {
             [pmLs addObject:result.PM1];
-            [pmEmailLs addObject:result.PM1Email];
+//            [pmEmailLs addObject:result.PM1Email];
+            if (result.PM1Email) {
+                [pmEmailLs addObject:result.PM1Email];
+            }else{
+                [pmEmailLs addObject:@""];
+            }
         }
         if (result.PM2) {
             [pmLs addObject:result.PM2];
-            [pmEmailLs addObject:result.PM2Email];
+            if (result.PM2Email) {
+                [pmEmailLs addObject:result.PM2Email];
+            }else{
+                [pmEmailLs addObject:@""];
+            }
+//            [pmEmailLs addObject:result.PM2Email];
         }
         //        NSLog(@"%@ %@ %@ %@", result.PM3, result.PM4, result.PM3Email, result.PM4Email);
         if (result.PM3) {
             [pmLs addObject:result.PM3];
+            if (result.PM3Email) {
             [pmEmailLs addObject:result.PM3Email];
+            }else{
+            [pmEmailLs addObject:@""];
+            }
+            
         }
         if (result.PM4) {
             [pmLs addObject:result.PM4];
-            [pmEmailLs addObject:result.PM4Email];
+            if (result.PM4Email) {
+                [pmEmailLs addObject:result.PM4Email];
+            }else{
+                [pmEmailLs addObject:@""];
+            }
+//            [pmEmailLs addObject:result.PM4Email];
         }
 
         
@@ -2013,7 +2033,7 @@
     }else{
         NSString *str;
         str =[NSString stringWithFormat:@"http://ws.buildersaccess.com/brochure.aspx?email=%@&password=%@&idfloorplan=%@&idcia=%d", [userInfo getUserName], [userInfo getUserPwd], result.IDFloorplan, [userInfo getCiaId]];
-        
+//        NSLog(@"%@", str);
         NSURL *url = [NSURL URLWithString:str];
         if (turl==url) {
             NSString *pdfname =[NSString stringWithFormat:@"%@_brochure.pdf", result.Name];

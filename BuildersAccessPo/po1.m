@@ -1005,6 +1005,11 @@ int y;
 //@"Email Vendor"
 
 -(IBAction)doupdate1:(UIButton *)sender {
+    if ([sender.currentTitle isEqualToString:@"Approve For Payment"] && [pd.canApprovePayment isEqualToString:@"0"]) {
+        UIAlertView *alert=[self getErrorAlert:@"Related task has not been finished."];
+        [alert show];
+        return;
+    }
     kv= sender.titleLabel.text;
     Reachability* curReach  = [Reachability reachabilityWithHostName: @"ws.buildersaccess.com"];
     NetworkStatus netStatus = [curReach currentReachabilityStatus];

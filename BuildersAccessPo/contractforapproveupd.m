@@ -439,12 +439,19 @@
                     
                     y1=y1+5;
                 }else{
+//                    lbl2 = [[UILabel alloc]initWithFrame:CGRectMake(20, y1, dwidth-20, 21)];
+//                    lbl2.text=di.BType;
+//                    lbl2.numberOfLines=0;
+//                    lbl2.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                    lbl2.font=[UIFont systemFontOfSize:14.0];
+//                    [lbl2 sizeToFit];
+//                    y1=y1+lbl2.frame.size.height+5;
                     lbl2 = [[UILabel alloc]initWithFrame:CGRectMake(20, y1, dwidth-20, 21)];
-                    lbl2.text=di.BType;
+                    lbl2.text=[NSString stringWithFormat:@"%@ %@", di.BType, di.Price];
                     lbl2.numberOfLines=0;
-                    lbl2.autoresizingMask=UIViewAutoresizingFlexibleWidth;
                     lbl2.font=[UIFont systemFontOfSize:14.0];
                     [lbl2 sizeToFit];
+                    lbl2.autoresizingMask=UIViewAutoresizingFlexibleWidth;
                     y1=y1+lbl2.frame.size.height+5;
                 }
             }else{

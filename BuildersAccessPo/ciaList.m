@@ -121,7 +121,7 @@ int currentpage, pageno;
     cl_cia *mcia =[[cl_cia alloc]init];
     mcia.managedObjectContext=self.managedObjectContext;
     ciaListresult =[mcia getCiaList];
-    NSLog(@"%@", self.uw);
+//    NSLog(@"%@", self.uw);
     if (([ciaListresult count]+1)*44<self.uw.frame.size.height-44) {
         ciatbview=[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.uw.frame.size.width, ([ciaListresult count]+1)*44)];
     }else{
@@ -172,13 +172,13 @@ int currentpage, pageno;
         static NSString *CellIdentifier = @"CellcialistCell";
         
         cialistCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
+//        if (cell == nil)
+//        {
             cell = [[cialistCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
-        }
+//        }
         
         NSEntityDescription *cia =[ciaListresult objectAtIndex:indexPath.row];
    
