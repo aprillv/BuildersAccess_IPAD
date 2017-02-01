@@ -19,13 +19,13 @@
 #import "CustomKeyboard.h"
 #import "wcfPODetail.h"
 
-@interface emailVendor ()<UIPickerViewDataSource, UIPickerViewDelegate,UITextViewDelegate,UIActionSheetDelegate, UIAlertViewDelegate, CustomKeyboardDelegate, MBProgressHUDDelegate>{
+@interface emailVendor ()<UITextViewDelegate, UIAlertViewDelegate, CustomKeyboardDelegate, MBProgressHUDDelegate>{
     UIScrollView *uv;
     CustomKeyboard *keyboard;
     NSMutableArray * pickerArray;
     UIButton *dd1;
     UITextView *txtNote;
-    UIPickerView *ddpicker;
+//    UIPickerView *ddpicker;
     UIButton *btnNext;
 
     MBProgressHUD *HUD;
@@ -348,13 +348,13 @@
         wcfService *service=[wcfService service];
         [service xSendEmail:self action:@selector(xSendEmailHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: poid xto: dd1.titleLabel.text oldvendoremail: @"" xmsg: txtNote.text EquipmentType: @"3" xtype:  @""];
         
-        
+//        [service xSendEmail:self action:@selector(xSendEmailHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: poid xto: @"april@buildersaccess.com" oldvendoremail: @"" xmsg: txtNote.text EquipmentType: @"3" xtype:  @""];
         
 
     }
 }
 
-- (void) xSendEmailHandler: (BOOL) value {
+- (void) xSendEmailHandler: (NSString*) value {
     
 	if (!value) {
         self.view.userInteractionEnabled=YES;
@@ -387,53 +387,88 @@
 }
 
 -(IBAction)popupscreen2:(id)sender{
-    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                    cancelButtonTitle:nil
-                                               destructiveButtonTitle:@"Select"
-                                                    otherButtonTitles:nil];
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Select"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
     
-    [actionSheet setBackgroundColor:[UIColor clearColor]];
-    [actionSheet setTag:1];
-    actionSheet.delegate=self;
-    if (ddpicker ==nil) {
-        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
-        ddpicker.showsSelectionIndicator = YES;
-        ddpicker.delegate = self;
-        ddpicker.dataSource = self;
+    for(int i = 0; i< pickerArray.count; i++) {
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:[pickerArray objectAtIndex:i]
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlert Action for tapping OK Button");
+                                 [dd1 setTitle:action.title forState:UIControlStateNormal];
+                                 [alert dismissViewControllerAnimated:YES  completion:^{
+                                     
+                                 }];
+                                 
+                                 
+                             }];
+        [alert addAction:ok];
     }
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlertActionController for tapping cancel button");
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
     
-    [actionSheet addSubview:ddpicker];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:dd1.frame inView:uv animated:YES];; // show from our table view (pops up in the middle of the table)
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
     
-//    int y=0;
-//    if (self.view.frame.size.height>480) {
-//        y=80;
+//    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                                    cancelButtonTitle:nil
+//                                               destructiveButtonTitle:@"Select"
+//                                                    otherButtonTitles:nil];
+//    
+//    [actionSheet setBackgroundColor:[UIColor clearColor]];
+//    [actionSheet setTag:1];
+//    actionSheet.delegate=self;
+//    if (ddpicker ==nil) {
+//        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
+//        ddpicker.showsSelectionIndicator = YES;
+//        ddpicker.delegate = self;
+//        ddpicker.dataSource = self;
 //    }
 //    
-//    [actionSheet setFrame:CGRectMake(0, 177+y, 320, 383)];
+//    [actionSheet addSubview:ddpicker];
 //    
-//    [[[actionSheet subviews]objectAtIndex:0] setFrame:CGRectMake(20,180, 120, 46)];
-//    [[[actionSheet subviews]objectAtIndex:1] setFrame:CGRectMake(180,180, 120, 46)];
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    [actionSheet showFromRect:dd1.frame inView:uv animated:YES];; // show from our table view (pops up in the middle of the table)
+//    
+////    int y=0;
+////    if (self.view.frame.size.height>480) {
+////        y=80;
+////    }
+////    
+////    [actionSheet setFrame:CGRectMake(0, 177+y, 320, 383)];
+////    
+////    [[[actionSheet subviews]objectAtIndex:0] setFrame:CGRectMake(20,180, 120, 46)];
+////    [[[actionSheet subviews]objectAtIndex:1] setFrame:CGRectMake(180,180, 120, 46)];
     
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    [dd1 setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];    
-    
-}
+//-(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    [dd1 setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];    
+//    
+//}
 
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
--(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [pickerArray count];
-}
--(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [pickerArray objectAtIndex:row];
-}
+//-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+//    return 1;
+//}
+//
+//-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+//    return [pickerArray count];
+//}
+//-(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+//    return [pickerArray objectAtIndex:row];
+//}
 
 
 - (void)didReceiveMemoryWarning

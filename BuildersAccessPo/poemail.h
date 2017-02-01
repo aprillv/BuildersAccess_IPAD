@@ -10,9 +10,8 @@
 #import "wcfPODetail.h"
 #import "CustomKeyboard.h"
 
-@interface poemail : mainmenuaaa<UIPickerViewDataSource, UIPickerViewDelegate,UITextViewDelegate,UIActionSheetDelegate, UIAlertViewDelegate, CustomKeyboardDelegate>{
+@interface poemail : mainmenuaaa<UITextViewDelegate, UIAlertViewDelegate, CustomKeyboardDelegate>{
     CustomKeyboard *keyboard;
-    UIDatePicker *pdate;
     UIButton *txtDate;
     bool isreleased;
     bool isDraftorForapprove;
@@ -27,7 +26,6 @@
 @property(nonatomic, retain)  UIButton *dd1;
 @property(copy, nonatomic) NSString *idvendor;
 @property (retain, nonatomic) NSMutableArray * pickerArray;
-@property(nonatomic, retain) UIPickerView *ddpicker;
 @property int xtype;
 @property bool isfromassign;
 @property(nonatomic, retain)  UITextView *txtNote;

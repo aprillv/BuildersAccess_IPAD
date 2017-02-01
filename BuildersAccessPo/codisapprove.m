@@ -337,6 +337,8 @@
 //}
 
 -(IBAction)popupscreen2:(id)sender{
+    
+   
    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
                                      cancelButtonTitle:nil
                                 destructiveButtonTitle:@"Select"

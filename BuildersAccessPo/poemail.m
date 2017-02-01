@@ -26,7 +26,7 @@ MBProgressHUD *HUD;
 
 @implementation poemail
 
-@synthesize dd1, txtNote, pickerArray, ddpicker, xtype, idpo1,xmcode, isfromassign, idvendor;
+@synthesize dd1, txtNote, pickerArray, xtype, idpo1,xmcode, isfromassign, idvendor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -577,37 +577,32 @@ MBProgressHUD *HUD;
     [txtNote resignFirstResponder];
         
     
-    
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
-    
-    [actionSheet setTag:2];
-    actionSheet.delegate=self;
-
-    
-    if (pdate ==nil) {
-        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
-        pdate.datePickerMode=UIDatePickerModeDate;
-        Mysql *msql=[[Mysql alloc]init];
-        if ([pd.Delivery rangeOfString:@"1980"].location == NSNotFound) {
-            [pdate setDate:[msql dateFromString:pd.Delivery]];
-        }
-        
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    Mysql *msql=[[Mysql alloc]init];
+    if ([pd.Delivery rangeOfString:@"1980"].location == NSNotFound) {
+        [picker setDate:[msql dateFromString:pd.Delivery]];
     }
-    [actionSheet addSubview:pdate];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtDate.frame inView:uv animated:YES];
-//    if (self.view.frame.size.height>500) {
-//        [actionSheet setFrame:CGRectMake(0, 207, 320, 383)];
-//    }else{
-//        [actionSheet setFrame:CGRectMake(0, 117, 320, 383)];
-//    }
-//    
-//    [[[actionSheet subviews]objectAtIndex:0] setFrame:CGRectMake(20,236, 120, 46)];
-//    [[[actionSheet subviews]objectAtIndex:1] setFrame:CGRectMake(180,236, 120, 46)];
+    [alertController.view addSubview:picker];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            if (formatter == nil) {
+                formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"MM/dd/YYYY"];
+            }
+            
+            [txtDate setTitle:[formatter stringFromDate:picker.date] forState:UIControlStateNormal];
+//            NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    UIPopoverPresentationController *popoverController = alertController.popoverPresentationController;
+    popoverController.sourceView = sender;
+    popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
     
     
 }
@@ -675,10 +670,10 @@ MBProgressHUD *HUD;
     
     wcfService *service=[wcfService service];
         if(isfromassign){
-            [service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 xtype: [[NSNumber numberWithInt:xtype]stringValue] update: @"1" vendorid: idvendor delivery: dl xlgsel:@"" xcode: xmcode EquipmentType: @"5"];
+            [service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 xtype: [[NSNumber numberWithInt:xtype]stringValue] update: @"1" vendorid: idvendor delivery: dl xlgsel:@"" xcode: xmcode EquipmentType: @"5" continueyn: @"0"];
         }else{
     
-    [service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid:idpo1 xtype: [[NSNumber numberWithInt:xtype]stringValue] update: @"" vendorid: [[NSNumber numberWithInt:pd.Idvendor] stringValue] delivery: dl xlgsel:@"" xcode: xmcode EquipmentType: @"5"];
+    [service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid:idpo1 xtype: [[NSNumber numberWithInt:xtype]stringValue] update: @"" vendorid: [[NSNumber numberWithLong:pd.Idvendor] stringValue] delivery: dl xlgsel:@"" xcode: xmcode EquipmentType: @"5" continueyn: @"0"];
     
        }
 }
@@ -723,14 +718,14 @@ MBProgressHUD *HUD;
             [service xSendMessage:self action:@selector(xSendMessageHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 oldvendoremail: @"" xmsg: nmsg EquipmentType: @"5" xtype: [[NSNumber numberWithInt:xtype] stringValue]];
         }else{
             [service xSendEmail:self action:@selector(xSendEmailHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 xto: dd1.titleLabel.text oldvendoremail: @"" xmsg: nmsg EquipmentType: @"5" xtype: [[NSNumber numberWithInt:xtype] stringValue]];
+//            [service xSendEmail:self action:@selector(xSendEmailHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 xto: @"april@buildersaccess.com" oldvendoremail: @"" xmsg: nmsg EquipmentType: @"5" xtype: [[NSNumber numberWithInt:xtype] stringValue]];
             
-//             [service xSendEmail:self action:@selector(xSendEmailHandler:) xemail: [userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] xpoid: idpo1 xto: @"xiujun_85@163.com" oldvendoremail: @"xiujun_85@163.com" xmsg: nmsg EquipmentType: @"5" xtype: [[NSNumber numberWithInt:xtype] stringValue]];
             
         }
     }
 }
 
-- (void) xSendMessageHandler: (BOOL) value {
+- (void) xSendMessageHandler: (NSString*) value {
    
 	if (!value) {
         self.view.userInteractionEnabled=YES;
@@ -760,7 +755,7 @@ MBProgressHUD *HUD;
 
 
 
-- (void) xSendEmailHandler: (BOOL) value {
+- (void) xSendEmailHandler: (NSString*) value {
     
 	if (!value) {
         self.view.userInteractionEnabled=YES;
@@ -807,67 +802,57 @@ MBProgressHUD *HUD;
 
 
 -(IBAction)popupscreen2:(id)sender{
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Select"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
     
-    [actionSheet setTag:1];
-    actionSheet.delegate=self;
-    if (ddpicker ==nil) {
-        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
-        ddpicker.showsSelectionIndicator = YES;
-        ddpicker.delegate = self;
-        ddpicker.dataSource = self;
+    for(int i = 0; i< pickerArray.count; i++) {
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:[pickerArray objectAtIndex:i]
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+//                                 NSLog(@"Resolving UIAlert Action for tapping OK Button");
+                                 [dd1 setTitle:action.title forState:UIControlStateNormal];
+                                 [alert dismissViewControllerAnimated:YES  completion:^{
+                                     
+                                 }];
+                                 
+                                 
+                             }];
+        [alert addAction:ok];
     }
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+//                                 NSLog(@"Resolving UIAlertActionController for tapping cancel button");
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
     
-    [actionSheet addSubview:ddpicker];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:dd1.frame inView:uv animated:YES]; // show from our table view (pops up in the middle of the table)
-    
-//    int y=0;
-//    if (self.view.frame.size.height>480) {
-//        y=80;
-//    }
-//    
-//    [actionSheet setFrame:CGRectMake(0, 177+y, 320, 383)];
-//    
-//    [[[actionSheet subviews]objectAtIndex:0] setFrame:CGRectMake(20,180, 120, 46)];
-//    [[[actionSheet subviews]objectAtIndex:1] setFrame:CGRectMake(180,180, 120, 46)];
-    
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (actionSheet1.tag==2) {
-        if (buttonIndex == 0) {
-            if (!formatter) {
-                formatter = [[NSDateFormatter alloc]init];
-                [formatter setDateFormat:@"MM/dd/YYYY"];
-            }
-            [txtDate setTitle:[formatter stringFromDate:[pdate date]] forState:UIControlStateNormal];
-        }
-        [uv setContentOffset:CGPointMake(0,0) animated:YES];
-        
-    }else{
-        if (buttonIndex == 0) {
-            [dd1 setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];
-        }
-    }
-    
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+    return;
+   
     
 }
 
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
 
--(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [pickerArray count];
-}
--(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [pickerArray objectAtIndex:row];
-}
+
+//-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+//    return 1;
+//}
+//
+//-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+//    return [pickerArray count];
+//}
+//-(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+//    return [pickerArray objectAtIndex:row];
+//}
 
 
 - (void)didReceiveMemoryWarning

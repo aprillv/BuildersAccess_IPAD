@@ -389,7 +389,7 @@
 	[service xUpdateUserProfileWithoutPhoto:self action:@selector(xUpdateUserProfileWithoutPhotoHandler:) xemail: @"" xpassword: @"" title: @"" name: @"" fax: @"" mobile: @"" phone: @"" EquipmentType: @""];
 
 	// Returns int. 
-	[service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: @"" xpassword: @"" xidcia: @"" xpoid: @"" xtype: @"" update: @"" vendorid: @"" delivery: @"" xlgsel: @"" xcode: @"" EquipmentType: @""];
+	[service xUpdateUserPurchaseOrder:self action:@selector(xUpdateUserPurchaseOrderHandler:) xemail: @"" xpassword: @"" xidcia: @"" xpoid: @"" xtype: @"" update: @"" vendorid: @"" delivery: @"" xlgsel: @"" xcode: @"" EquipmentType: @"" continueyn: @"0"];
 
 	// Returns NSString*. 
 	[service xUpdateVPO:self action:@selector(xUpdateVPOHandler:) xemail: @"" xpassword: @"" xidcia: @"" xidproject: @"" xidnumber: @"" toemail: @"" delivery: @"" notes: @"" total: @"" EquipmentType: @""];
@@ -3114,12 +3114,13 @@
 
 // Handle the response from xSendMessage.
 		
-- (void) xSendMessageHandler: (BOOL) value {
+- (void) xSendMessageHandler: (NSString*) value {
 			
 
 	// Do something with the BOOL result
 		
-	NSLog(@"xSendMessage returned the value: %@", [NSNumber numberWithBool:value]);
+//	NSLog(@"xSendMessage returned the value: %@", [NSNumber numberWithBool:value]);
+    NSLog(@"xSendMessage returned the value: %@", value);
 			
 }
 	
@@ -3294,12 +3295,13 @@
 
 // Handle the response from xUpdateUserPurchaseOrder.
 		
-- (void) xUpdateUserPurchaseOrderHandler: (int) value {
+- (void) xUpdateUserPurchaseOrderHandler: (NSString *) value {
 			
 
 	// Do something with the int result
 		
-	NSLog(@"xUpdateUserPurchaseOrder returned the value: %@", [NSNumber numberWithInt:value]);
+//	NSLog(@"xUpdateUserPurchaseOrder returned the value: %@", [NSNumber numberWithInt:value]);
+    	NSLog(@"xUpdateUserPurchaseOrder returned the value: %@",value);
 			
 }
 	

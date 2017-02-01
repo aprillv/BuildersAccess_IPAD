@@ -2313,6 +2313,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 7D8CVP7EK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildersAccessPo/BuildersAccess_IPAD-Prefix.pch";
 				INFOPLIST_FILE = "BuildersAccessPo/BuildersAccess_IPAD-Info.plist";
@@ -2321,6 +2322,7 @@
 				PRODUCT_NAME = BuildersAccess_IPAD;
 				PROVISIONING_PROFILE = "80cc7fed-0df2-40c5-ac0e-5e13ab88f5c4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bb3faba-abcb-40c6-ac29-62116378344b";
+				PROVISIONING_PROFILE_SPECIFIER = BuildersAccess;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2331,6 +2333,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 7D8CVP7EK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildersAccessPo/BuildersAccess_IPAD-Prefix.pch";
 				INFOPLIST_FILE = "BuildersAccessPo/BuildersAccess_IPAD-Info.plist";
@@ -2339,6 +2342,7 @@
 				PRODUCT_NAME = BuildersAccess_IPAD;
 				PROVISIONING_PROFILE = "80cc7fed-0df2-40c5-ac0e-5e13ab88f5c4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bb3faba-abcb-40c6-ac29-62116378344b";
+				PROVISIONING_PROFILE_SPECIFIER = BuildersAccess;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
