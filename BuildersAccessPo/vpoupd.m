@@ -436,7 +436,7 @@ MBProgressHUD* HUD;
     
     if (!pd.Email) {
         if ([pickerArray count]>0) {
-            [dd1 setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];
+            [dd1 setTitle:[pickerArray objectAtIndex: 0] forState:UIControlStateNormal];
             
             [dd1 addTarget:self action:@selector(popupscreen2:) forControlEvents:UIControlEventTouchDown];
         }else{
@@ -698,75 +698,77 @@ MBProgressHUD* HUD;
 -(IBAction)popupscreen:(id)sender{
     
     [txtNote resignFirstResponder];    
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
+
     
-    [actionSheet setTag:2];
-    actionSheet.delegate=self;
-    
-    if (pdate ==nil) {
-        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
-        pdate.datePickerMode=UIDatePickerModeDate;
-        Mysql *msql=[[Mysql alloc]init];
-        [pdate setDate:[msql dateFromString:pd.Delivery]];
-        
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    Mysql *msql=[[Mysql alloc]init];
+    if ([pd.Delivery rangeOfString:@"1980"].location == NSNotFound) {
+        [picker setDate:[msql dateFromString:pd.Delivery]];
     }
-    [actionSheet addSubview:pdate];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtDate.frame inView:uv animated:YES];
-    
-    
+    [alertController.view addSubview:picker];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            if (formatter == nil) {
+                formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"MM/dd/YYYY"];
+            }
+            [txtDate setTitle:[formatter stringFromDate:picker.date] forState:UIControlStateNormal];
+            //            NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    UIPopoverPresentationController *popoverController1 = alertController.popoverPresentationController;
+    popoverController1.sourceView = sender;
+    popoverController1.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
     
 }
 
 -(IBAction)popupscreen2:(id)sender{
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
     
-    [actionSheet setTag:1];
-    actionSheet.delegate=self;
-    if (ddpicker ==nil) {
-        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
-        ddpicker.showsSelectionIndicator = YES;
-        ddpicker.delegate = self;
-        ddpicker.dataSource = self;
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Select"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    for(int i = 0; i< pickerArray.count; i++) {
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:[pickerArray objectAtIndex:i]
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlert Action for tapping OK Button");
+                                 [dd1 setTitle:action.title forState:UIControlStateNormal];
+                                 [alert dismissViewControllerAnimated:YES  completion:^{
+                                     
+                                 }];
+                                 
+                                 
+                             }];
+        [alert addAction:ok];
     }
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlertActionController for tapping cancel button");
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
     
-    [actionSheet addSubview:ddpicker];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:dd1.frame inView:uv animated:YES]; // show from our table view (pops up in the middle of the table)
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+  
     
       
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (actionSheet1.tag==1) {
-        if (buttonIndex == 0) {
-            [dd1 setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];
-        }
-        
-    }else{
-        if (buttonIndex == 0) {
-            if (!formatter) {
-                formatter = [[NSDateFormatter alloc]init];
-                [formatter setDateFormat:@"MM/dd/YYYY"];
-            }
-            [txtDate setTitle:[formatter stringFromDate:[pdate date]] forState:UIControlStateNormal];
-        }
-        [uv setContentOffset:CGPointMake(0,0) animated:YES];
-        
-    }
-    
-    
-    
-    
-}
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

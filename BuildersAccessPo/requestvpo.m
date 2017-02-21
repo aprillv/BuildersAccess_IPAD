@@ -22,6 +22,8 @@
 #import "development.h"
 #import "project.h"
 #import <MobileCoreServices/MobileCoreServices.h> // For UTI
+#import "OptionsUITableViewCell.h"
+
 
 @interface requestvpo ()< CustomKeyboardDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIAlertViewDelegate, MBProgressHUDDelegate, UITextViewDelegate>{
     UITextView *txtNote;
@@ -48,6 +50,7 @@
     NSURL *turl;
     NSString *requestby;
     NSDateFormatter *formatter;
+    UIAlertController *alertControllerA;
 }
 
 @end
@@ -800,6 +803,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView.tag==1) {
         return [super tableView:tableView numberOfRowsInSection:section];
+    }else if (tableView.tag==9999) {
+        return pickerArray.count;
     }else{
      return [a count];
     }
@@ -812,6 +817,27 @@
    
     if (tableView.tag==1) {
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    }else if(tableView.tag == 9999) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        
+        static NSString *CellIdentifier = @"Cell9999";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+//            cell.textLabel.autoresizingMask = YES;
+//            cell.textLabel.minimumScaleFactor = 0.5;
+            [cell.textLabel setAdjustsFontSizeToFitWidth: YES];
+            [cell.textLabel setMinimumScaleFactor:0.5];
+        }
+        [cell .imageView setImage:nil];
+        cell.textLabel.text = pickerArray[indexPath.row];
+        
+        return cell;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -845,7 +871,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView.tag==1) {
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }else if(tableView.tag == 9999) {
+        [alertControllerA dismissViewControllerAnimated:YES completion:^{
+            [txtReason setTitle:pickerArray[indexPath.row] forState:UIControlStateNormal];
+        }];
+        
     }
+    
 }
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     
@@ -1401,28 +1433,33 @@ donext=@"1";
 
 -(IBAction)popupscreen:(id)sender{
     
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
-    
-    [actionSheet setTag:2];
-    actionSheet.delegate=self;
-    
-    
-    if (pdate ==nil) {
-        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
-        pdate.datePickerMode=UIDatePickerModeDate;
-        Mysql *msql=[[Mysql alloc]init];
-        if (![txtDate.currentTitle isEqualToString:@""]) {
-            [pdate setDate:[msql dateFromString:txtDate.currentTitle]];
-        }
-        
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    Mysql *msql=[[Mysql alloc]init];
+    if ([pd.DeliveryDate rangeOfString:@"1980"].location == NSNotFound) {
+        [picker setDate:[msql dateFromString:pd.DeliveryDate]];
     }
-    [actionSheet addSubview:pdate];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtDate.frame inView:uv animated:YES];
+    [alertController.view addSubview:picker];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            if (formatter == nil) {
+                formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"MM/dd/YYYY"];
+            }
+            
+            [txtDate setTitle:[formatter stringFromDate:picker.date] forState:UIControlStateNormal];
+            //            NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    UIPopoverPresentationController *popoverController = alertController.popoverPresentationController;
+    popoverController.sourceView = sender;
+    popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
+    
     
         
 }
@@ -1432,57 +1469,56 @@ donext=@"1";
     
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (actionSheet1.tag==2) {
-        if (buttonIndex == 0) {
-            if (!formatter) {
-                formatter = [[NSDateFormatter alloc]init];
-                [formatter setDateFormat:@"MM/dd/YYYY"];
-            }
-            [txtDate setTitle:[formatter stringFromDate:[pdate date]] forState:UIControlStateNormal];
-        }
-        [uv setContentOffset:CGPointMake(0,0) animated:YES];
-        
-    }  else{
-        if (buttonIndex == 0) {
-            [txtReason setTitle:[pickerArray objectAtIndex: [ddpicker selectedRowInComponent:0]] forState:UIControlStateNormal];
-        }
-    }
-    
-}
+
 
 -(IBAction)popupscreen2:(id)sender{
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
+    UIViewController *controller = [[UIViewController alloc]init];
+    UITableView *alertTableView;
+    CGRect rect;
     
-    [actionSheet setTag:1];
-    actionSheet.delegate=self;
-    if (ddpicker ==nil) {
-        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
-        ddpicker.showsSelectionIndicator = YES;
-        ddpicker.delegate = self;
-        ddpicker.dataSource = self;
-    }
+    rect = CGRectMake(0, 0, 275, (pickerArray.count < 6) ? pickerArray.count * 44 : 250);
+        [controller setPreferredContentSize:rect.size];
     
-    [actionSheet addSubview:ddpicker];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtReason.frame inView:uv animated:YES]; // show from our table view (pops up in the middle of the table)
+    alertTableView  = [[UITableView alloc]initWithFrame:rect];
+    alertTableView.delegate = self;
+    alertTableView.dataSource = self;
+    alertTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    [alertTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [alertTableView setTag:9999];
+    [controller.view addSubview:alertTableView];
+    [controller.view bringSubviewToFront:alertTableView];
+    [controller.view setUserInteractionEnabled:YES];
+    [alertTableView setUserInteractionEnabled:YES];
+    [alertTableView setAllowsSelection:YES];
+    alertControllerA = [UIAlertController alertControllerWithTitle:@"Select" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertControllerA setValue:controller forKey:@"contentViewController"];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+    }];
+    [alertControllerA addAction:cancelAction];
+    UIPopoverPresentationController *popoverController = alertControllerA.popoverPresentationController;
+    popoverController.sourceView = sender;
+    popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertControllerA  animated:YES completion:nil];
+
+    
+    return;
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Select"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+
     
 
 }
+
+
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
-}
-
--(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [pickerArray count];
-}
--(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return [pickerArray objectAtIndex:row];
 }
 
 -(IBAction)goback1:(id)sender{

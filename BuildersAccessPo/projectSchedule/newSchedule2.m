@@ -203,7 +203,7 @@
     
     
     
-    tbview=[[UITableView alloc] initWithFrame:CGRectMake(10, 10, dwidth-20, xheight)];
+    tbview = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, dwidth-20, xheight + 74)];
     tbview.layer.cornerRadius = 10;
     tbview.delegate=self;
     tbview.dataSource = self;
@@ -220,15 +220,15 @@
     
         
         
-        UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [loginButton setFrame:CGRectMake(10, xheight+20, dwidth-20, 44)];
-        [loginButton setTitle:@"Update Schedule" forState:UIControlStateNormal];
-        [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-        [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-        [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-         loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-        [loginButton addTarget:self action:@selector(doapprove1) forControlEvents:UIControlEventTouchUpInside];
-        [uv addSubview:loginButton];
+//        UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [loginButton setFrame:CGRectMake(10, xheight+20, dwidth-20, 44)];
+//        [loginButton setTitle:@"Update Schedule" forState:UIControlStateNormal];
+//        [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//        [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//        [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//         loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//        [loginButton addTarget:self action:@selector(doapprove1) forControlEvents:UIControlEventTouchUpInside];
+//        [uv addSubview:loginButton];
         xheight=xheight+74;
         
     }
@@ -306,21 +306,23 @@
 //        imageView.userInteractionEnabled = YES; //added based on @John 's comment
 //        cell.accessoryView = imageView;
         if (!(![xidstep isEqualToString:@"-1"] && indexPath.row==0 && !event.DcompleteYN) && event.canEdit) {
-            UIImageView *imageView;
-            if (event.DcompleteYN||event.DcompleteYN2) {
-                
-                imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checked.png"]];
-            }else {
-                event. DcompleteYN2=NO;
-                imageView=  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uncheck.png"]];
-            }
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChecking:)];
-            [imageView addGestureRecognizer:tap];
-            imageView.userInteractionEnabled = YES; //added based on @John 's comment
-            cell.accessoryView = imageView;
+//            UIImageView *imageView;
+//            if (event.DcompleteYN||event.DcompleteYN2) {
+//                
+//                imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checked.png"]];
+//            }else {
+//                event. DcompleteYN2=NO;
+//                imageView=  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uncheck.png"]];
+//            }
+//            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChecking:)];
+//            [imageView addGestureRecognizer:tap];
+//            imageView.userInteractionEnabled = YES; //added based on @John 's comment
+//            cell.accessoryView = imageView;
+            cell.accessoryType=UITableViewCellAccessoryNone;
+            [cell.imageView setImage:nil];
         }else{
             cell.accessoryType=UITableViewCellAccessoryNone;
-            [cell .imageView setImage:nil];
+            [cell.imageView setImage:nil];
         }
         
         cell.textLabel.text=event.Name;
@@ -401,7 +403,7 @@
         return [super tableView:tableView didSelectRowAtIndexPath:indexPath2];
         
     }else{
-       
+        return;
         
         //    xidnum=((wcfProjectSchedule *)[wi objectAtIndex:indexPath.row]);
         //    [self doupdateCheck];
@@ -583,6 +585,7 @@
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
     // Return YES if you want the specified item to be editable.
     wcfProjectSchedule *event =[wi objectAtIndex:(indexPath.row)];
     //    if ((![xidstep isEqualToString:@"-1"] && indexPath.row==0 && !event.DcompleteYN)) {

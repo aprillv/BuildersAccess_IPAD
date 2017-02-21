@@ -577,7 +577,7 @@ MBProgressHUD *HUD;
     [txtNote resignFirstResponder];
         
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Select" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker setDatePickerMode:UIDatePickerModeDate];
     Mysql *msql=[[Mysql alloc]init];

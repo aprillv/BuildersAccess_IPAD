@@ -11,7 +11,7 @@
 #import "MBProgressHUD.h"
 #import "requestpoemail.h"
 
-@interface requestvpo : mainmenuaaa<UIAlertViewDelegate,UIDocumentInteractionControllerDelegate, UIActionSheetDelegate>{
+@interface requestvpo : mainmenuaaa<UIAlertViewDelegate,UIDocumentInteractionControllerDelegate>{
     
     int xtype;
     

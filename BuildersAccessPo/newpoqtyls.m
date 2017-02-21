@@ -19,6 +19,7 @@
 
 @interface newpoqtyls ()<MBProgressHUDDelegate>{
 MBProgressHUD* HUD;
+    NSDateFormatter *formatter;
 }
 
 @end
@@ -573,45 +574,109 @@ MBProgressHUD* HUD;
        
     
     
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
+//    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                                     cancelButtonTitle:nil
+//                                                destructiveButtonTitle:@"Select"
+//                                                     otherButtonTitles:nil];
+//    
+//    [actionSheet setTag:2];
+//    actionSheet.delegate=self;
+//    
+//    if (pdate ==nil) {
+//        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
+//        pdate.datePickerMode=UIDatePickerModeDate;
+//        
+//    }
+//    [actionSheet addSubview:pdate];
+//    
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    [actionSheet showFromRect:txtDate.frame inView:uv animated:YES];
     
-    [actionSheet setTag:2];
-    actionSheet.delegate=self;
     
-    if (pdate ==nil) {
-        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
-        pdate.datePickerMode=UIDatePickerModeDate;
-        
-    }
-    [actionSheet addSubview:pdate];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtDate.frame inView:uv animated:YES];    
+    
+    [alertController.view addSubview:picker];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            if (formatter == nil) {
+                formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"MM/dd/YYYY"];
+            }
+            
+            [txtDate setTitle:[formatter stringFromDate:picker.date] forState:UIControlStateNormal];
+            //            NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    UIPopoverPresentationController *popoverControllers = alertController.popoverPresentationController;
+    popoverControllers.sourceView = txtDate;
+    popoverControllers.sourceRect = [txtDate bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
     
 }
 
 -(IBAction)popupscreen2:(id)sender{
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                                     cancelButtonTitle:nil
-                                                destructiveButtonTitle:@"Select"
-                                                     otherButtonTitles:nil];
+//    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                                     cancelButtonTitle:nil
+//                                                destructiveButtonTitle:@"Select"
+//                                                     otherButtonTitles:nil];
+//    
+//    [actionSheet setTag:1];
+//    actionSheet.delegate=self;
+//    if (ddpicker ==nil) {
+//        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
+//        ddpicker.showsSelectionIndicator = YES;
+//        ddpicker.delegate = self;
+//        ddpicker.dataSource = self;
+//    }
+//    
+//    [actionSheet addSubview:ddpicker];
+//    
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    [actionSheet showFromRect:dd1.frame inView:uv animated:YES];
     
-    [actionSheet setTag:1];
-    actionSheet.delegate=self;
-    if (ddpicker ==nil) {
-        ddpicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 270, 90)];
-        ddpicker.showsSelectionIndicator = YES;
-        ddpicker.delegate = self;
-        ddpicker.dataSource = self;
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Select"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    for(int i = 0; i< pickerArray.count; i++) {
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:[pickerArray objectAtIndex:i]
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlert Action for tapping OK Button");
+                                 [dd1 setTitle:action.title forState:UIControlStateNormal];
+                                 [alert dismissViewControllerAnimated:YES  completion:^{
+                                     
+                                 }];
+                                 
+                                 
+                             }];
+        [alert addAction:ok];
     }
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 //                                 NSLog(@"Resolving UIAlertActionController for tapping cancel button");
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
     
-    [actionSheet addSubview:ddpicker];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:dd1.frame inView:uv animated:YES];
+    [alert addAction:cancel];
+    UIPopoverPresentationController *popoverControllers = alert.popoverPresentationController;
+    popoverControllers.sourceView = dd1;
+    popoverControllers.sourceRect = [dd1 bounds];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{

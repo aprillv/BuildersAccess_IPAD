@@ -757,6 +757,8 @@
 }
 
 -(IBAction)popupscreen2:(id)sender{
+    
+    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
                                                     cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Select",@"Cancel", nil];
     [actionSheet setTag:1];

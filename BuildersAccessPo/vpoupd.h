@@ -10,13 +10,13 @@
 #import "CustomKeyboard.h"
 #import "wcfvpoDetail.h"
 
-@interface vpoupd : mainmenuaaa<UIPickerViewDataSource, UIPickerViewDelegate,UIActionSheetDelegate, UIAlertViewDelegate, CustomKeyboardDelegate, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface vpoupd : mainmenuaaa<UIAlertViewDelegate, CustomKeyboardDelegate, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     UIScrollView *uv;
     CustomKeyboard *keyboard;
     UIButton *dd1;
     NSMutableArray * pickerArray;
-    UIPickerView *ddpicker;
-    UIDatePicker *pdate;
+//    UIPickerView *ddpicker;
+//    UIDatePicker *pdate;
     UIButton *txtDate;
     UITextView *txtNote;
     UITextField *txtTotal;

@@ -11,7 +11,7 @@
 #import "wcfCalendarEntryItem.h"
 #import "MBProgressHUD.h"
 
-@interface calendarforapproveupd : mainmenuaaa<UITextViewDelegate, UITextFieldDelegate, CustomKeyboardDelegate, UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate, MBProgressHUDDelegate>{
+@interface calendarforapproveupd : mainmenuaaa<UITextViewDelegate, UITextFieldDelegate, CustomKeyboardDelegate, UIAlertViewDelegate, MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource>{
     UITextField *txtSubject;
     UITextField *txtLocation;
     UITextField *txtContractNm;

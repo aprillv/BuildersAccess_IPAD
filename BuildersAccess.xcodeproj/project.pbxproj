@@ -13,6 +13,7 @@
 		11EB618F1CBD05D700C3DCE4 /* ios7-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB618C1CBD05D700C3DCE4 /* ios7-arrow-right.png */; };
 		11EB61901CBD05D700C3DCE4 /* ios7-arrow-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB618D1CBD05D700C3DCE4 /* ios7-arrow-right@2x.png */; };
 		11EB61911CBD05D700C3DCE4 /* ios7-arrow-right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB618E1CBD05D700C3DCE4 /* ios7-arrow-right@3x.png */; };
+		421BC6D71E556AF60006411B /* OptionsUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 421BC6D61E556AF60006411B /* OptionsUITableViewCell.m */; };
 		9E00E3081767FCD200AC86D8 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3071767FCD200AC86D8 /* mp.png */; };
 		9E00E30A1767FCDF00AC86D8 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3091767FCDF00AC86D8 /* sp.png */; };
 		9E00E30C1767FCEA00AC86D8 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E30B1767FCEA00AC86D8 /* logout.png */; };
@@ -354,6 +355,8 @@
 		11EB618C1CBD05D700C3DCE4 /* ios7-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right.png"; sourceTree = "<group>"; };
 		11EB618D1CBD05D700C3DCE4 /* ios7-arrow-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right@2x.png"; sourceTree = "<group>"; };
 		11EB618E1CBD05D700C3DCE4 /* ios7-arrow-right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right@3x.png"; sourceTree = "<group>"; };
+		421BC6D51E556AF60006411B /* OptionsUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsUITableViewCell.h; sourceTree = "<group>"; };
+		421BC6D61E556AF60006411B /* OptionsUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsUITableViewCell.m; sourceTree = "<group>"; };
 		9E00E3071767FCD200AC86D8 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
 		9E00E3091767FCDF00AC86D8 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 		9E00E30B1767FCEA00AC86D8 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -1321,6 +1324,8 @@
 				11EB61751CBCE2C000C3DCE4 /* BAUITableViewCell.m */,
 				11EB61771CBCEB6600C3DCE4 /* BAUITableView.h */,
 				11EB61781CBCEB6600C3DCE4 /* BAUITableView.m */,
+				421BC6D51E556AF60006411B /* OptionsUITableViewCell.h */,
+				421BC6D61E556AF60006411B /* OptionsUITableViewCell.m */,
 			);
 			path = CustomControl;
 			sourceTree = "<group>";
@@ -2044,6 +2049,7 @@
 				9E21B23F1758755B00DE2D44 /* UIView+Border.m in Sources */,
 				9E21B2401758755B00DE2D44 /* CKCalendarCell.m in Sources */,
 				9E21B2411758755B00DE2D44 /* CKCalendarEvent.m in Sources */,
+				421BC6D71E556AF60006411B /* OptionsUITableViewCell.m in Sources */,
 				9E21B2421758755B00DE2D44 /* CKCalendarHeaderView.m in Sources */,
 				9E21B2441758755B00DE2D44 /* MBPolygonView.m in Sources */,
 				9E21B24A1758851100DE2D44 /* kirbytitle.m in Sources */,

@@ -19,7 +19,7 @@
 #import "userInfo.h"
 #import "Mysql.h"
 
-@interface selectionDetailq ()<UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MBProgressHUDDelegate, CustomKeyboardDelegate>
+@interface selectionDetailq ()<UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MBProgressHUDDelegate, CustomKeyboardDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -50,6 +50,8 @@
     MBProgressHUD *HUD;
     UIButton *loginButton1;
     UIButton *loginButton;
+    NSDateFormatter *formatter;
+    UIAlertController *alertControllerA;
     int donext;
 }
 @synthesize idnumber;
@@ -659,33 +661,60 @@
     [txtNote resignFirstResponder];
     //     [uv setContentOffset:CGPointMake(0,txtDate.frame.origin.y-180) animated:YES];
     
-    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                     cancelButtonTitle:nil
-                                destructiveButtonTitle:@"Select"
-                                     otherButtonTitles:nil];
-    
-    
-    
-    [actionSheet setTag:1];
-    
-    if (pdate ==nil) {
-        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
-        pdate.datePickerMode=UIDatePickerModeDate;
-        Mysql *msql=[[Mysql alloc]init];
-        if ([txtDate.titleLabel.text isEqualToString:@""]) {
-            [pdate setDate:[[NSDate alloc] init]];
-        }else{
-            
-            [pdate setDate:[msql dateFromString:txtDate.titleLabel.text]];
-        }
-        
+//    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                     cancelButtonTitle:nil
+//                                destructiveButtonTitle:@"Select"
+//                                     otherButtonTitles:nil];
+//    
+//    
+//    
+//    [actionSheet setTag:1];
+//    
+//    if (pdate ==nil) {
+//        pdate=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 270, 90)];
+//        pdate.datePickerMode=UIDatePickerModeDate;
+//        Mysql *msql=[[Mysql alloc]init];
+//        if ([txtDate.titleLabel.text isEqualToString:@""]) {
+//            [pdate setDate:[[NSDate alloc] init]];
+//        }else{
+//            
+//            [pdate setDate:[msql dateFromString:txtDate.titleLabel.text]];
+//        }
+//        
+//    }
+//    [actionSheet addSubview:pdate];
+//    
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    actionSheet.delegate=self;
+//    [actionSheet showFromRect:txtDate.frame inView:contentView animated:NO];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    pdate = [[UIDatePicker alloc] init];
+    [pdate setDatePickerMode:UIDatePickerModeDate];
+    Mysql *msql=[[Mysql alloc]init];
+    if ([txtDate.titleLabel.text isEqualToString:@""]) {
+        [pdate setDate:[[NSDate alloc] init]];
+    }else{
+        [pdate setDate:[msql dateFromString: txtDate.titleLabel.text]];
     }
-    [actionSheet addSubview:pdate];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    actionSheet.delegate=self;
-    [actionSheet showFromRect:txtDate.frame inView:contentView animated:NO];
-    
+    [alertController.view addSubview:pdate];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            if (formatter == nil) {
+                formatter = [[NSDateFormatter alloc]init];
+                [formatter setDateFormat:@"MM/dd/YYYY"];
+            }
+            
+            [txtDate setTitle:[formatter stringFromDate: pdate.date] forState:UIControlStateNormal];
+            //            NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    UIPopoverPresentationController *popoverController = alertController.popoverPresentationController;
+    popoverController.sourceView = sender;
+    popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
 }
 
 
@@ -729,47 +758,99 @@
     [txtemail resignFirstResponder];
     [txtNote resignFirstResponder];
     
+    UIViewController *controller = [[UIViewController alloc]init];
+    UITableView *alertTableView;
+    CGRect rect;
     
-    actionSheet=nil;
-    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                     cancelButtonTitle:nil
-                                destructiveButtonTitle:@"Select"
-                                     otherButtonTitles:nil];
-    [actionSheet setTag:2];
-    actionSheet.delegate=self;
-    if (pstart ==nil) {
-        pstart = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        pstart.showsSelectionIndicator = YES;
-        
-        pstart.delegate = self;
-        pstart.dataSource = self;
-        if (pickerArrayStart ==nil) {
-            pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
-            int j =0;
-            for (int i=0; i<[pickerArrayStart count]; i++) {
-                
-                if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
-                    j=i;
-                    [pstart selectRow:i inComponent:0 animated:YES];
-                    break;
-                }
-            }
+    if (pickerArrayStart ==nil) {
+        pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
+        int j =0;
+        for (int i=0; i<[pickerArrayStart count]; i++) {
             
-            NSMutableArray *t = [[NSMutableArray alloc]init];
-            for (int i=j; i<[pickerArrayStart count]; i++) {
-                [t addObject:[pickerArrayStart objectAtIndex:i]];
+            if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
+                j=i;
+                [pstart selectRow:i inComponent:0 animated:YES];
+                break;
             }
-            pickerArrayEnd=t;
         }
         
-        
+        NSMutableArray *t = [[NSMutableArray alloc]init];
+        for (int i=j; i<[pickerArrayStart count]; i++) {
+            [t addObject:[pickerArrayStart objectAtIndex:i]];
+        }
+        pickerArrayEnd=t;
     }
     
-    [actionSheet addSubview:pstart];
+    rect = CGRectMake(0, 0, 275, (pickerArrayStart.count < 6) ? pickerArrayStart.count * 44 : 250);
+    [controller setPreferredContentSize:rect.size];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtStart.frame inView:contentView animated:NO];
+    
+    alertTableView  = [[UITableView alloc]initWithFrame:rect];
+    alertTableView.delegate = self;
+    alertTableView.dataSource = self;
+    alertTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    [alertTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [alertTableView setTag:9999];
+    [controller.view addSubview:alertTableView];
+    [controller.view bringSubviewToFront:alertTableView];
+    [controller.view setUserInteractionEnabled:YES];
+    [alertTableView setUserInteractionEnabled:YES];
+    [alertTableView setAllowsSelection:YES];
+    alertControllerA = [UIAlertController alertControllerWithTitle:@"Select" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertControllerA setValue:controller forKey:@"contentViewController"];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+    }];
+    [alertControllerA addAction:cancelAction];
+    UIPopoverPresentationController *popoverController = alertControllerA.popoverPresentationController;
+    popoverController.sourceView = txtStart;
+    popoverController.sourceRect = [txtStart bounds];
+    [self presentViewController:alertControllerA  animated:YES completion:nil];
+    return;
+    
+//    
+//    actionSheet=nil;
+//    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                     cancelButtonTitle:nil
+//                                destructiveButtonTitle:@"Select"
+//                                     otherButtonTitles:nil];
+//    [actionSheet setTag:2];
+//    actionSheet.delegate=self;
+//    if (pstart ==nil) {
+//        pstart = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+//        pstart.showsSelectionIndicator = YES;
+//        
+//        pstart.delegate = self;
+//        pstart.dataSource = self;
+//        if (pickerArrayStart ==nil) {
+//            pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
+//            int j =0;
+//            for (int i=0; i<[pickerArrayStart count]; i++) {
+//                
+//                if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
+//                    j=i;
+//                    [pstart selectRow:i inComponent:0 animated:YES];
+//                    break;
+//                }
+//            }
+//            
+//            NSMutableArray *t = [[NSMutableArray alloc]init];
+//            for (int i=j; i<[pickerArrayStart count]; i++) {
+//                [t addObject:[pickerArrayStart objectAtIndex:i]];
+//            }
+//            pickerArrayEnd=t;
+//        }
+//        
+//        
+//    }
+//    
+//    [actionSheet addSubview:pstart];
+//    
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    [actionSheet showFromRect:txtStart.frame inView:contentView animated:NO];
 }
+
+
 
 -(IBAction)popupscreen2:(id)sender{
     
@@ -781,55 +862,105 @@
     [txtemail resignFirstResponder];
     [txtNote resignFirstResponder];
     
-    actionSheet=nil;
-    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
-                                     cancelButtonTitle:nil
-                                destructiveButtonTitle:@"Select"
-                                     otherButtonTitles:nil];
-    [actionSheet setTag:3];
-    actionSheet.delegate=self;
-    if (pend ==nil) {
-        pend = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-        pend.showsSelectionIndicator = YES;
-        
-        
-        if (pickerArrayStart ==nil) {
-            pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
-            int j =0;
-            for (int i=0; i<[pickerArrayStart count]; i++) {
-                
-                if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
-                    j=i;
-                    [pstart selectRow:i inComponent:0 animated:YES];
-                    break;
-                }
-            }
+    
+    UIViewController *controller = [[UIViewController alloc]init];
+    UITableView *alertTableView;
+    CGRect rect;
+    
+    if (pickerArrayStart ==nil) {
+        pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
+        int j =0;
+        for (int i=0; i<[pickerArrayStart count]; i++) {
             
-            NSMutableArray *t = [[NSMutableArray alloc]init];
-            for (int i=j; i<[pickerArrayStart count]; i++) {
-                [t addObject:[pickerArrayStart objectAtIndex:i]];
+            if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
+                j=i;
+                [pstart selectRow:i inComponent:0 animated:YES];
+                break;
             }
-            pickerArrayEnd=t;
-            
         }
         
-        pend.delegate = self;
-        pend.dataSource = self;
-        
-        
-    }
-    
-    for (int i=0; i<[pickerArrayStart count]; i++) {
-        if ([result.EndTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
-            [pend selectRow:i inComponent:0 animated:YES];
+        NSMutableArray *t = [[NSMutableArray alloc]init];
+        for (int i=j; i<[pickerArrayStart count]; i++) {
+            [t addObject:[pickerArrayStart objectAtIndex:i]];
         }
+        pickerArrayEnd=t;
     }
     
+    rect = CGRectMake(0, 0, 275, (pickerArrayEnd.count < 6) ? pickerArrayEnd.count * 44 : 250);
+    [controller setPreferredContentSize:rect.size];
     
-    [actionSheet addSubview:pend];
     
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    [actionSheet showFromRect:txtEnd.frame inView:contentView animated:NO];
+    alertTableView  = [[UITableView alloc]initWithFrame:rect];
+    alertTableView.delegate = self;
+    alertTableView.dataSource = self;
+    alertTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    [alertTableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [alertTableView setTag:9998];
+    [controller.view addSubview:alertTableView];
+    [controller.view bringSubviewToFront:alertTableView];
+    [controller.view setUserInteractionEnabled:YES];
+    [alertTableView setUserInteractionEnabled:YES];
+    [alertTableView setAllowsSelection:YES];
+    alertControllerA = [UIAlertController alertControllerWithTitle:@"Select" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertControllerA setValue:controller forKey:@"contentViewController"];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+    }];
+    [alertControllerA addAction:cancelAction];
+    UIPopoverPresentationController *popoverController = alertControllerA.popoverPresentationController;
+    popoverController.sourceView = sender;
+    popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertControllerA  animated:YES completion:nil];
+    
+//    actionSheet=nil;
+//    actionSheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n" delegate:nil
+//                                     cancelButtonTitle:nil
+//                                destructiveButtonTitle:@"Select"
+//                                     otherButtonTitles:nil];
+//    [actionSheet setTag:3];
+//    actionSheet.delegate=self;
+//    if (pend ==nil) {
+//        pend = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+//        pend.showsSelectionIndicator = YES;
+//        
+//        
+//        if (pickerArrayStart ==nil) {
+//            pickerArrayStart = [NSArray arrayWithObjects: @"06:00 AM", @"06:30 AM", @"07:00 AM", @"07:30 AM", @"08:00 AM", @"08:30 AM", @"09:00 AM", @"09:30 AM", @"10:00 AM", @"10:30 AM", @"11:00 AM", @"11:30 AM", @"12:00 PM", @"12:30 PM", @"01:00 PM", @"01:30 PM", @"02:00 PM", @"02:30 PM", @"03:00 PM", @"03:30 PM", @"04:00 PM", @"04:30 PM", @"05:00 PM", @"05:30 PM", @"06:00 PM", @"06:30 PM", @"07:00 PM", @"07:30 PM", @"08:00 PM", @"08:30 PM", @"09:00 PM", nil];
+//            int j =0;
+//            for (int i=0; i<[pickerArrayStart count]; i++) {
+//                
+//                if ([result.StartTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
+//                    j=i;
+//                    [pstart selectRow:i inComponent:0 animated:YES];
+//                    break;
+//                }
+//            }
+//            
+//            NSMutableArray *t = [[NSMutableArray alloc]init];
+//            for (int i=j; i<[pickerArrayStart count]; i++) {
+//                [t addObject:[pickerArrayStart objectAtIndex:i]];
+//            }
+//            pickerArrayEnd=t;
+//            
+//        }
+//        
+//        pend.delegate = self;
+//        pend.dataSource = self;
+//        
+//        
+//    }
+//    
+//    for (int i=0; i<[pickerArrayStart count]; i++) {
+//        if ([result.EndTime isEqualToString:[pickerArrayStart objectAtIndex:i]]) {
+//            [pend selectRow:i inComponent:0 animated:YES];
+//        }
+//    }
+//    
+//    
+//    [actionSheet addSubview:pend];
+//    
+//    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+//    [actionSheet showFromRect:txtEnd.frame inView:contentView animated:NO];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet1 clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -970,6 +1101,75 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+     if (tableView.tag==9999) {
+        return pickerArrayStart.count;
+    }else{
+        return pickerArrayEnd.count;
+    }
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (tableView.tag == 9999) {
+        static NSString *CellIdentifier = @"Cell9999";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            //            cell.textLabel.autoresizingMask = YES;
+            //            cell.textLabel.minimumScaleFactor = 0.5;
+            [cell.textLabel setAdjustsFontSizeToFitWidth: YES];
+            [cell.textLabel setMinimumScaleFactor:0.5];
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        }
+        [cell .imageView setImage:nil];
+        cell.textLabel.text = pickerArrayStart[indexPath.row];
+        return cell;
+    }else{
+        static NSString *CellIdentifier = @"Cell9998";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            //            cell.textLabel.autoresizingMask = YES;
+            //            cell.textLabel.minimumScaleFactor = 0.5;
+            [cell.textLabel setAdjustsFontSizeToFitWidth: YES];
+            [cell.textLabel setMinimumScaleFactor:0.5];
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        }
+        [cell .imageView setImage:nil];
+        cell.textLabel.text = pickerArrayEnd[indexPath.row];
+        return cell;
+    }
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView.tag == 9999) {
+        [alertControllerA dismissViewControllerAnimated:YES completion:^{
+            [txtStart setTitle:pickerArrayStart[indexPath.row] forState:UIControlStateNormal];
+        }];
+        
+    }else{
+        [alertControllerA dismissViewControllerAnimated:YES completion:^{
+            [txtEnd setTitle:pickerArrayEnd[indexPath.row] forState:UIControlStateNormal];
+        }];
+    }
+    
 }
 
 @end
