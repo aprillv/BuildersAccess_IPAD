@@ -462,97 +462,97 @@ int y;
     y=y+20;
     if (fromforapprove==1) {
         if ([pd.Status isEqualToString:@"Turn In"]) {
-            UIButton *loginButton;
-            if (pd.Hold) {
-                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-                [loginButton setTitle:@"Hold" forState:UIControlStateNormal];
-                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-                [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-                [loginButton addTarget:self action:@selector(dohold:) forControlEvents:UIControlEventTouchUpInside];
-                [uv addSubview:loginButton];
-                y=y+54;
-                
-//                [[ntabbar.items objectAtIndex:3]setImage:[UIImage imageNamed:@"hold.png"] ];
-//                [[ntabbar.items objectAtIndex:3]setTitle:@"Hold" ];
-//                [[ntabbar.items objectAtIndex:3] setEnabled:YES];
-//                [[ntabbar.items objectAtIndex:3]setAction:@selector(dohold:) ];
-            }
-            
-            if ([pd.ApprovePayment isEqualToString:@"1"]) {
-                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-                [loginButton setTitle:@"Approve" forState:UIControlStateNormal];
-                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-                [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-                [loginButton addTarget:self action:@selector(doapprove:) forControlEvents:UIControlEventTouchUpInside];
-                [uv addSubview:loginButton];
-                y=y+54;
-                
-//                [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"approve.png"] ];
-//                [[ntabbar.items objectAtIndex:0]setTitle:@"Approve" ];
-//                [[ntabbar.items objectAtIndex:0] setEnabled:YES];
-//                [[ntabbar.items objectAtIndex:0]setAction:@selector(doapprove:) ];
-            }
-            
-            if ([pd.Disapprove isEqualToString:@"1"]) {
-                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-                [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
-                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-                [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-                [loginButton addTarget:self action:@selector(dodisapprove:) forControlEvents:UIControlEventTouchUpInside];
-                [uv addSubview:loginButton];
-                y=y+54;
-                
-//                [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"disapprove.png"] ];
-//                [[ntabbar.items objectAtIndex:13]setTitle:@"Disapprove" ];
-//                [[ntabbar.items objectAtIndex:13] setEnabled:YES];
-//                [[ntabbar.items objectAtIndex:13]setAction:@selector(dodisapprove:) ];
-            }
-        }else if([pd.Status isEqualToString:@"For Approve"] || ([pd.Status isEqualToString:@"Hold"])){
-            if ([pd.ApprovePayment isEqualToString:@"1"]) {
-                UIButton *loginButton;
-//                [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"approve.png"] ];
-//                [[ntabbar.items objectAtIndex:0]setTitle:@"Approve" ];
-//                [[ntabbar.items objectAtIndex:0] setEnabled:YES];
-//                [[ntabbar.items objectAtIndex:0]setAction:@selector(doapprove:) ];
-                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-                [loginButton setTitle:@"Approve" forState:UIControlStateNormal];
-                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-                [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-                [loginButton addTarget:self action:@selector(doapprove:) forControlEvents:UIControlEventTouchUpInside];
-                [uv addSubview:loginButton];
-                y=y+54;
-            }
-            if ([pd.Disapprove isEqualToString:@"1"]) {
-                 UIButton *loginButton;
-//                [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"disapprove.png"] ];
-//                [[ntabbar.items objectAtIndex:13]setTitle:@"Disapprove" ];
-//                [[ntabbar.items objectAtIndex:13] setEnabled:YES];
-//                [[ntabbar.items objectAtIndex:13]setAction:@selector(dodisapprove:) ];
-                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-                [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
-                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-                [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-                [loginButton addTarget:self action:@selector(dodisapprove:) forControlEvents:UIControlEventTouchUpInside];
-                [uv addSubview:loginButton];
-                y=y+54;
-                
-            }           
-           
+//            UIButton *loginButton;
+//            if (pd.Hold) {
+//                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//                [loginButton setTitle:@"Hold" forState:UIControlStateNormal];
+//                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//                [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                [loginButton addTarget:self action:@selector(dohold:) forControlEvents:UIControlEventTouchUpInside];
+//                [uv addSubview:loginButton];
+//                y=y+54;
+//                
+////                [[ntabbar.items objectAtIndex:3]setImage:[UIImage imageNamed:@"hold.png"] ];
+////                [[ntabbar.items objectAtIndex:3]setTitle:@"Hold" ];
+////                [[ntabbar.items objectAtIndex:3] setEnabled:YES];
+////                [[ntabbar.items objectAtIndex:3]setAction:@selector(dohold:) ];
+//            }
+//            
+//            if ([pd.ApprovePayment isEqualToString:@"1"]) {
+//                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//                [loginButton setTitle:@"Approve" forState:UIControlStateNormal];
+//                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//                [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                [loginButton addTarget:self action:@selector(doapprove:) forControlEvents:UIControlEventTouchUpInside];
+//                [uv addSubview:loginButton];
+//                y=y+54;
+//                
+////                [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"approve.png"] ];
+////                [[ntabbar.items objectAtIndex:0]setTitle:@"Approve" ];
+////                [[ntabbar.items objectAtIndex:0] setEnabled:YES];
+////                [[ntabbar.items objectAtIndex:0]setAction:@selector(doapprove:) ];
+//            }
+//            
+//            if ([pd.Disapprove isEqualToString:@"1"]) {
+//                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//                [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
+//                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//                [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                [loginButton addTarget:self action:@selector(dodisapprove:) forControlEvents:UIControlEventTouchUpInside];
+//                [uv addSubview:loginButton];
+//                y=y+54;
+//                
+////                [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"disapprove.png"] ];
+////                [[ntabbar.items objectAtIndex:13]setTitle:@"Disapprove" ];
+////                [[ntabbar.items objectAtIndex:13] setEnabled:YES];
+////                [[ntabbar.items objectAtIndex:13]setAction:@selector(dodisapprove:) ];
+//            }
+//        }else if([pd.Status isEqualToString:@"For Approve"] || ([pd.Status isEqualToString:@"Hold"])){
+//            if ([pd.ApprovePayment isEqualToString:@"1"]) {
+//                UIButton *loginButton;
+////                [[ntabbar.items objectAtIndex:0]setImage:[UIImage imageNamed:@"approve.png"] ];
+////                [[ntabbar.items objectAtIndex:0]setTitle:@"Approve" ];
+////                [[ntabbar.items objectAtIndex:0] setEnabled:YES];
+////                [[ntabbar.items objectAtIndex:0]setAction:@selector(doapprove:) ];
+//                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//                [loginButton setTitle:@"Approve" forState:UIControlStateNormal];
+//                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//                [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                [loginButton addTarget:self action:@selector(doapprove:) forControlEvents:UIControlEventTouchUpInside];
+//                [uv addSubview:loginButton];
+//                y=y+54;
+//            }
+//            if ([pd.Disapprove isEqualToString:@"1"]) {
+//                 UIButton *loginButton;
+////                [[ntabbar.items objectAtIndex:13]setImage:[UIImage imageNamed:@"disapprove.png"] ];
+////                [[ntabbar.items objectAtIndex:13]setTitle:@"Disapprove" ];
+////                [[ntabbar.items objectAtIndex:13] setEnabled:YES];
+////                [[ntabbar.items objectAtIndex:13]setAction:@selector(dodisapprove:) ];
+//                loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//                [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
+//                [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//                [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//                [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//                [loginButton addTarget:self action:@selector(dodisapprove:) forControlEvents:UIControlEventTouchUpInside];
+//                [uv addSubview:loginButton];
+//                y=y+54;
+//                
+//            }           
+//           
         }
         
         
@@ -568,158 +568,158 @@ int y;
 //        [[ntabbar.items objectAtIndex:13]setAction:@selector(refreshPrject) ];
         
     }else{
-        UIButton* loginButton;
-        if (pd.CanEmail && ![pd.Status isEqualToString:@"Paid"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Email Vendor" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if([pd.AssignVendor intValue]>0){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            if(pd.Idvendor>0){
-                [loginButton setTitle:@"Re-Assign Vendor" forState:UIControlStateNormal];
-            }else{
-                [loginButton setTitle:@"Assign Vendor" forState:UIControlStateNormal];
-            }
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if(pd.Release!=nil && [pd.Release isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Release" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-        }
-        if([pd.ForApprove isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Release" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if(pd.Hold){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Hold" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-        }
-        
-        if(pd.ApprovePayment !=nil && [pd.ApprovePayment isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Approve For Payment" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-        }
-        
-        if(pd.PartialPayment !=nil && [pd.PartialPayment isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Partial Payment" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if(pd.PrintCheck!=nil && [pd.PrintCheck isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Print Check" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if(pd.Disapprove !=nil && [pd.Disapprove isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-            
-        }
-        
-        if (pd.ReOpen!=nil && [pd.ReOpen isEqualToString:@"1"]) {
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Re-Open" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-        }
-        
-        if(pd.Void!=nil && [pd.Void isEqualToString:@"1"]){
-            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
-            [loginButton setTitle:@"Void" forState:UIControlStateNormal];
-            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
-            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
-            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
-            [uv addSubview:loginButton];
-            y=y+54;
-        }
+//        UIButton* loginButton;
+//        if (pd.CanEmail && ![pd.Status isEqualToString:@"Paid"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Email Vendor" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if([pd.AssignVendor intValue]>0){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            if(pd.Idvendor>0){
+//                [loginButton setTitle:@"Re-Assign Vendor" forState:UIControlStateNormal];
+//            }else{
+//                [loginButton setTitle:@"Assign Vendor" forState:UIControlStateNormal];
+//            }
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if(pd.Release!=nil && [pd.Release isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Release" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//        }
+//        if([pd.ForApprove isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Release" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if(pd.Hold){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Hold" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//        }
+//        
+//        if(pd.ApprovePayment !=nil && [pd.ApprovePayment isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Approve For Payment" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//        }
+//        
+//        if(pd.PartialPayment !=nil && [pd.PartialPayment isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Partial Payment" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if(pd.PrintCheck!=nil && [pd.PrintCheck isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Print Check" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"greenButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if(pd.Disapprove !=nil && [pd.Disapprove isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Disapprove" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//            
+//        }
+//        
+//        if (pd.ReOpen!=nil && [pd.ReOpen isEqualToString:@"1"]) {
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Re-Open" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"yButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//        }
+//        
+//        if(pd.Void!=nil && [pd.Void isEqualToString:@"1"]){
+//            loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            [loginButton setFrame:CGRectMake(10, y, dwidth, 44)];
+//            [loginButton setTitle:@"Void" forState:UIControlStateNormal];
+//            [loginButton.titleLabel setFont:[UIFont boldSystemFontOfSize:17.0f]];
+//            [loginButton setBackgroundImage:[[UIImage imageNamed:@"redButton.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//            [loginButton addTarget:self action:@selector(doupdate1:) forControlEvents:UIControlEventTouchUpInside];
+//            loginButton.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+//            [uv addSubview:loginButton];
+//            y=y+54;
+//        }
         
        
         if (fromforapprove==3) {
