@@ -65,6 +65,8 @@
     BOOL _poyn;
     NSString* _requestvpo;
     NSString* _sqft;
+    BOOL _newinterior;
+    BOOL _newexterior;
     
 }
 
@@ -122,6 +124,8 @@
 @property BOOL coyn;
 @property (retain, nonatomic) NSString* mastercia;
 @property BOOL poyn;
+@property BOOL newinterior;
+@property BOOL newexterior;
 @property (retain, nonatomic) NSString* requestvpo;
 @property (retain, nonatomic) NSString* sqft;
 
