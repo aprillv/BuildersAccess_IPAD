@@ -32,6 +32,7 @@
 #import "qacalendarViewController.h"
 #import "multiSearch.h"
 #import "selectioncalendar.h"
+#import "BANavigationBar.h"
 
 #define NAVBAR_HEIGHT   64
 
@@ -68,6 +69,8 @@ NSString *atitle;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden=YES;
     if (!menulist) {
         self.menulist =[[NSMutableArray alloc]init];
@@ -215,7 +218,7 @@ NSString *atitle;
     }
 //    NSLog(@"%@", [UIScreen mainScreen]);
     
-    UINavigationBar* navigationBar1 =  [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 300, NAVBAR_HEIGHT)];
+    UINavigationBar* navigationBar1 =  [[BANavigationBar alloc] initWithFrame:CGRectMake(0, 0, 300, NAVBAR_HEIGHT)];
 //    navigationBar1.tintColor=[UIColor colorWithRed:0.1960784314 green:0.30980392159999998 blue:0.52156862749999999 alpha:1.f];
     UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"BuildersAccess"];
 //    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"[="
@@ -223,6 +226,10 @@ NSString *atitle;
 //    
 //    item.leftBarButtonItem=leftButton;
     item.hidesBackButton = YES;
+//    [[UINavigationBar appearance] setPrefersLargeTitles:YES];
+    
+    
+//    [[UINavigationBar appearance] setLargeTitleTextAttributes:[NSForegroundColorAttributeName: [UIColor blueColor]]];
     navigationBar1.tag=101;
     [navigationBar1 pushNavigationItem:item animated:NO];
     
@@ -243,6 +250,7 @@ NSString *atitle;
     UINavigationItem*ui= [navigationBar1.items objectAtIndex:0];
     ui.leftBarButtonItem=anotherButton;
    
+    [navigationBar1 setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:navigationBar1];
     
     
@@ -252,59 +260,20 @@ NSString *atitle;
 //    ciatbview1.layoutMargins = UIEdgeInsetsZero;
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.view addSubview:ciatbview1];
+//    [ciatbview1 setBackgroundColor:[UIColor redColor]];
     ciatbview1.delegate = self;
     ciatbview1.dataSource = self;
     ciatbview1.tag=1;
-    [ciatbview1 setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [ciatbview1 selectRowAtIndexPath:[NSIndexPath indexPathForRow:tbindex inSection:0] animated:NO scrollPosition:0];
+    [ciatbview1 setSeparatorStyle: UITableViewCellSeparatorStyleSingleLine];
+    [ciatbview1 selectRowAtIndexPath: [NSIndexPath indexPathForRow:tbindex inSection:0] animated:NO scrollPosition:0];
     if ((![self getIsTwoPart])) {
-        navigationBar =  [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, xw, NAVBAR_HEIGHT)];
-        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"=]" style:UIBarButtonItemStyleBordered target:self action:@selector(gosmall:) ];
+        navigationBar =  [[BANavigationBar alloc] initWithFrame:CGRectMake(0, 0, xw, NAVBAR_HEIGHT)];
+        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"=]" style:UIBarButtonItemStylePlain target:self action:@selector(gosmall:) ];
+//        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"=]"
+//                                                                          style: UIBarButtonItemStyleBordered
+//                                                                         target:self
+//                                                                         action:@selector(gosmall:) ];
       
-        
-//       UIButton* loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        [loginButton.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
-//        loginButton.frame=CGRectMake(0, 12, 60, 30);
-//        
-//        UIImage *image ;
-//        
-//            image =[mysql createImageWithColor:[UIColor grayColor]] ;
-//            [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        CALayer *imageLayer = [CALayer layer];
-//        imageLayer.frame = CGRectMake(0, 0, loginButton.frame.size.width, loginButton.frame.size.height);
-//        imageLayer.contents = (id) image.CGImage;
-//        
-//        imageLayer.masksToBounds = YES;
-//        imageLayer.cornerRadius = 4;
-//        imageLayer.borderColor=[UIColor darkGrayColor].CGColor;
-//        imageLayer.borderWidth=1.0f;
-//        
-//        UIGraphicsBeginImageContext(loginButton.frame.size);
-//        [imageLayer renderInContext:UIGraphicsGetCurrentContext()];
-//        UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
-//        
-//        [loginButton setBackgroundImage:roundedImage forState:UIControlStateNormal];
-//        
-//        
-//        
-//        //        loginButton.layer.cornerRadius = 5.0;
-//        [loginButton setTitle:@"=]" forState:UIControlStateNormal];
-//         [loginButton addTarget:self action:@selector(gosmall:) forControlEvents:UIControlEventTouchDown];
-//        
-////        UIButton *btn1 = [baControl getGrayButton];
-////        btn1.titleLabel.font=[UIFont systemFontOfSize:13.0];
-////        [btn1 setFrame:CGRectMake(0, 0, 60, 30)];
-////        [btn1 setTitle:@"=]" forState:UIControlStateNormal];
-////        [btn1 addTarget:self action:@selector(gosmall:) forControlEvents:UIControlEventTouchDown];
-//        
-////        menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-////        [menuButton setTitle:@"=]" forState:UIControlStateNormal];
-////        [menuButton addTarget:self action:@selector(gosmall:) forControlEvents:UIControlEventTouchUpInside];
-////        [menuButton setImage:[UIImage imageNamed:@"menuIcon"] forState:UIControlStateNormal];
-//        UIView *menuButtonContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-//        [menuButtonContainer addSubview:loginButton];
-        
         
         
         item = [[UINavigationItem alloc] initWithTitle:@"BuildersAccess"];
@@ -316,7 +285,7 @@ NSString *atitle;
         
     }else{
         
-        navigationBar =  [[UINavigationBar alloc] initWithFrame:CGRectMake(301, 0, xw-301, NAVBAR_HEIGHT)];
+        navigationBar =  [[BANavigationBar alloc] initWithFrame:CGRectMake(301, 0, xw-301, NAVBAR_HEIGHT)];
         item = [[UINavigationItem alloc] initWithTitle:@"BuildersAccess"];
         
         uw=[[UIView alloc]initWithFrame:CGRectMake(301, NAVBAR_HEIGHT, xw-301, xh-NAVBAR_HEIGHT-50)];
@@ -324,10 +293,10 @@ NSString *atitle;
     }
     
     navigationBar.items = [NSArray arrayWithObject:item];
-    
+    [navigationBar setBackgroundColor:[UIColor whiteColor]];
 //    navigationBar.tintColor=[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1.f];
     
-    UINavigationBar *navigationBar3 =  [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, xw, 50)];
+    UINavigationBar *navigationBar3 =  [[BANavigationBar alloc] initWithFrame:CGRectMake(0, 0, xw, 50)];
     
 //    navigationBar3.tintColor=[UIColor colorWithRed:0.000078 green:0.093804 blue:0.300569 alpha:1.f];
     navigationBar3.tag=100;

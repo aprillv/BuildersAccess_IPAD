@@ -124,9 +124,7 @@
     
 }
 
-- (void)scaleImage:(UIImage *)image
-
-{
+- (void)scaleImage:(UIImage *)image{
     ProjectPhotoName *pn =[ProjectPhotoName alloc];
     pn.managedObjectContext=self.managedObjectContext;
     pn.idproject=self.idproject;
@@ -142,12 +140,12 @@
 
 -(IBAction)gosmall:(id)sender{
     [super gosmall:sender];
-        sv.contentSize=CGSizeMake(self.uw.frame.size.width, sv.contentSize.height);
+    sv.contentSize=CGSizeMake(self.uw.frame.size.width, sv.contentSize.height);
     btnNext.frame = CGRectMake(10, 26, 40, 32);
 }
 -(IBAction)gobig:(id)sender{
     [super gobig:sender];
-        sv.contentSize=CGSizeMake(self.uw.frame.size.width, sv.contentSize.height);
+    sv.contentSize=CGSizeMake(self.uw.frame.size.width, sv.contentSize.height);
     btnNext.frame = CGRectMake(60, 26, 40, 32);
 }
 -(void)gotoprofile:(NSString *)xemail1{
@@ -410,6 +408,7 @@
     }else{
         wcfService* service = [wcfService service];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        NSLog(@"%@, %@, %@, %@", [userInfo getUserName], [userInfo getUserPwd], [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue], self.idproject);
         [service xGetProject:self action:@selector(xGetProjectHandler:) xemail:[userInfo getUserName] xpassword: [userInfo getUserPwd] xidcia: [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] projectid: self.idproject xtype: 1 EquipmentType: @"3"];
         
     }
@@ -1151,6 +1150,7 @@ int dwidth = self.uw.frame.size.width;
                     ViewController *si=[ViewController alloc];
                     si.managedObjectContext=self.managedObjectContext;
                     si.xurl=[NSString stringWithFormat:@"http://ws.buildersaccess.com/sitemap.aspx?email=%@&password=%@&idcia=%d&projectid=%@", [userInfo getUserName], [userInfo getUserPwd], [userInfo getCiaId], idproject];
+                    NSLog(@"%@", si.xurl);
                     si.menulist=self.menulist;
                     si.detailstrarr=self.detailstrarr;
                     si.tbindex=self.tbindex;

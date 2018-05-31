@@ -67,6 +67,8 @@
     NSString* _sqft;
     BOOL _newinterior;
     BOOL _newexterior;
+    NSString* _newinteriorURL;
+    NSString* _newexteriorURL;
     
 }
 
@@ -126,6 +128,8 @@
 @property BOOL poyn;
 @property BOOL newinterior;
 @property BOOL newexterior;
+@property (retain, nonatomic) NSString* newinteriorURL;
+@property (retain, nonatomic) NSString* newexteriorURL;
 @property (retain, nonatomic) NSString* requestvpo;
 @property (retain, nonatomic) NSString* sqft;
 

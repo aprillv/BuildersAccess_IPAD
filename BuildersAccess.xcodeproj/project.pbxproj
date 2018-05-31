@@ -14,6 +14,7 @@
 		11EB61901CBD05D700C3DCE4 /* ios7-arrow-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB618D1CBD05D700C3DCE4 /* ios7-arrow-right@2x.png */; };
 		11EB61911CBD05D700C3DCE4 /* ios7-arrow-right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EB618E1CBD05D700C3DCE4 /* ios7-arrow-right@3x.png */; };
 		421BC6D71E556AF60006411B /* OptionsUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 421BC6D61E556AF60006411B /* OptionsUITableViewCell.m */; };
+		4267BAAE2000A56C00D3D3D8 /* BANavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4267BAAD2000A56C00D3D3D8 /* BANavigationBar.m */; };
 		9E00E3081767FCD200AC86D8 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3071767FCD200AC86D8 /* mp.png */; };
 		9E00E30A1767FCDF00AC86D8 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E3091767FCDF00AC86D8 /* sp.png */; };
 		9E00E30C1767FCEA00AC86D8 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E00E30B1767FCEA00AC86D8 /* logout.png */; };
@@ -357,6 +358,8 @@
 		11EB618E1CBD05D700C3DCE4 /* ios7-arrow-right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right@3x.png"; sourceTree = "<group>"; };
 		421BC6D51E556AF60006411B /* OptionsUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsUITableViewCell.h; sourceTree = "<group>"; };
 		421BC6D61E556AF60006411B /* OptionsUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsUITableViewCell.m; sourceTree = "<group>"; };
+		4267BAAC2000A56C00D3D3D8 /* BANavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BANavigationBar.h; sourceTree = "<group>"; };
+		4267BAAD2000A56C00D3D3D8 /* BANavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BANavigationBar.m; sourceTree = "<group>"; };
 		9E00E3071767FCD200AC86D8 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
 		9E00E3091767FCDF00AC86D8 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 		9E00E30B1767FCEA00AC86D8 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -1151,6 +1154,8 @@
 				9E1B15ED1755F71C006870F4 /* bustoutupg.m */,
 				9E1C81E216E06F5B0011998B /* Products */,
 				9E1C81E316E06F5B0011998B /* Frameworks */,
+				4267BAAC2000A56C00D3D3D8 /* BANavigationBar.h */,
+				4267BAAD2000A56C00D3D3D8 /* BANavigationBar.m */,
 			);
 			name = BuildersAccess;
 			path = BuildersAccessPo;
@@ -1981,6 +1986,7 @@
 				9E1C81F316E06F5C0011998B /* main.m in Sources */,
 				9E1C81F716E06F5C0011998B /* AppDelegate.m in Sources */,
 				9E1C821116E06FB60011998B /* Login.m in Sources */,
+				4267BAAE2000A56C00D3D3D8 /* BANavigationBar.m in Sources */,
 				9E1C822216E073E20011998B /* Mysql.m in Sources */,
 				9E1C822316E073E20011998B /* userInfo.m in Sources */,
 				9E1C832D16E078FC0011998B /* fathercontroller.m in Sources */,

@@ -18,6 +18,7 @@
 #import "wcfService.h"
 #import "userInfo.h"
 #import "Mysql.h"
+#import "BANavigationBar.h"
 
 @interface selectionDetailq ()<UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MBProgressHUDDelegate, CustomKeyboardDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -75,7 +76,7 @@
     
     CGFloat y = (view.frame.size.height - 450 - NAVBAR_HEIGHT)/2 ;
     
-        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, y, view.bounds.size.width*.75, NAVBAR_HEIGHT)];
+        UINavigationBar *navigationBar = [[BANavigationBar alloc] initWithFrame:CGRectMake(view.bounds.size.width*.125, y, view.bounds.size.width*.75, NAVBAR_HEIGHT)];
     navigationBar.translucent = NO;
         navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         navigationBar.items = @[self.navigationItem];

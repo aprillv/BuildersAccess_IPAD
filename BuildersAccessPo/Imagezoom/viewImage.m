@@ -7,7 +7,7 @@
 //
 
 #import "viewImage.h"
-
+#import "BANavigationBar.h"
 #import "Mysql.h"
 
 #define NAVBAR_HEIGHT   44
@@ -34,7 +34,7 @@
                name:UIDeviceOrientationDidChangeNotification
              object:nil];
     
-    UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, NAVBAR_HEIGHT)];
+    UINavigationBar *navigationBar = [[BANavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, NAVBAR_HEIGHT)];
     navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     navigationBar.items = @[self.navigationItem];
     

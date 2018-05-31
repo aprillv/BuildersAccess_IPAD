@@ -179,6 +179,8 @@
         self.sqft = [Soap getNodeValue: node withName: @"sqft"];
         self.newinterior = [[Soap getNodeValue: node withName: @"newinterior"] boolValue];
         self.newexterior = [[Soap getNodeValue: node withName: @"newexterior"] boolValue];
+        self.newinteriorURL = [Soap getNodeValue: node withName: @"newinteriorURL"];
+        self.newexteriorURL = [Soap getNodeValue: node withName: @"newexteriorURL"];
     }
     return self;
 }
@@ -260,6 +262,8 @@
     if (self.sqft != nil) [s appendFormat: @"<sqft>%@</sqft>", [[self.sqft stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
     [s appendFormat: @"<newexterior>%@</newexterior>", (self.newexterior)?@"true":@"false"];
     [s appendFormat: @"<newinterior>%@</newinterior>", (self.newinterior)?@"true":@"false"];
+    if (self.newinteriorURL != nil) [s appendFormat: @"<newinteriorURL>%@</newinteriorURL>", [[self.newinteriorURL stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
+    if (self.newexteriorURL != nil) [s appendFormat: @"<newexteriorURL>%@</newexteriorURL>", [[self.newexteriorURL stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"] stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
     
     return s;
 }

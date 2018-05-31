@@ -1731,7 +1731,11 @@
                         }
                         
                     }else if([str isEqualToString:@"Interior Selection Pictures"]){
-                        surl=[NSString stringWithFormat:@"http://www.buildersaccess.com/Intranet/net/viewselection.aspx?xidcia=%@&xidproject=%@&xtype=1", result.Elovecia, idproject];
+                        if (!result.newinterior) {
+                            surl=[NSString stringWithFormat:@"http://www.buildersaccess.com/Intranet/net/viewselection.aspx?xidcia=%@&xidproject=%@&xtype=1", result.Elovecia, idproject];
+                        }else{
+                            surl= result.newinteriorURL;
+                        }
                     }else if([str isEqualToString:@"Exterior Selection List"]){
                         if (result.newexterior) {
                             surl=[NSString stringWithFormat:@"http://ws.buildersaccess.com/ExteriorSelectionList.aspx?email=%@&password=%@&idcia=%@&idproject=%@&mastercia=%@&EquipmentType=3&idfloorplan=%@",[userInfo getUserName],[userInfo getUserPwd], [[NSNumber numberWithInt:[userInfo getCiaId]] stringValue] , idproject, result.mastercia, result.IDFloorplan];
@@ -1739,7 +1743,12 @@
                         surl=[NSString stringWithFormat:@"http://www.buildersaccess.com/Intranet/net/viewlist.aspx?xidcia=%@&xidproject=%@&xtype=2", result.Elovecia, idproject];
                         }
                     }else{
-                        surl=[NSString stringWithFormat:@"http://www.buildersaccess.com/Intranet/net/viewselection.aspx?xidcia=%@&xidproject=%@&xtype=2", result.Elovecia, idproject];
+                        if (!result.newexterior) {
+                            surl=[NSString stringWithFormat:@"http://www.buildersaccess.com/Intranet/net/viewselection.aspx?xidcia=%@&xidproject=%@&xtype=2", result.Elovecia, idproject];
+                        }else{
+                            surl= result.newexteriorURL;
+                        }
+                        
                     }
                     website *LoginS=[website alloc];
                     LoginS.detailstrarr=self.detailstrarr;
