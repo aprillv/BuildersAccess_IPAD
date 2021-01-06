@@ -211,7 +211,7 @@
     [aaaa addSubview:v2];
     
     UILabel *lbl=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, xw-20, 40)];
-    lbl.text=@"Copyright © 2016 All Rights Reserved";
+    lbl.text=@"Copyright © 2021 All Rights Reserved";
     lbl.font=[UIFont systemFontOfSize:14.0f];
 //    lbl.textColor = [UIColor darkGrayColor];
 //    lbl.backgroundColor=[UIColor clearColor];

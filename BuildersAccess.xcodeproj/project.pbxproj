@@ -1881,6 +1881,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 9E1C81D816E06F5B0011998B;
@@ -2325,6 +2326,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 2021.01.06;
 				DEVELOPMENT_TEAM = 7D8CVP7EK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildersAccessPo/BuildersAccess_IPAD-Prefix.pch";
@@ -2334,7 +2336,7 @@
 				PRODUCT_NAME = BuildersAccess_IPAD;
 				PROVISIONING_PROFILE = "80cc7fed-0df2-40c5-ac0e-5e13ab88f5c4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bb3faba-abcb-40c6-ac29-62116378344b";
-				PROVISIONING_PROFILE_SPECIFIER = BuildersAccess;
+				PROVISIONING_PROFILE_SPECIFIER = "BA App";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2345,6 +2347,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CURRENT_PROJECT_VERSION = 2021.01.06;
 				DEVELOPMENT_TEAM = 7D8CVP7EK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildersAccessPo/BuildersAccess_IPAD-Prefix.pch";
@@ -2354,7 +2357,7 @@
 				PRODUCT_NAME = BuildersAccess_IPAD;
 				PROVISIONING_PROFILE = "80cc7fed-0df2-40c5-ac0e-5e13ab88f5c4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2bb3faba-abcb-40c6-ac29-62116378344b";
-				PROVISIONING_PROFILE_SPECIFIER = BuildersAccess;
+				PROVISIONING_PROFILE_SPECIFIER = "BA App";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
